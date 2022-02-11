@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+
+    <link rel="stylesheet" href="./css/landing.css" />
+    <title>..:: My Brand ::..</title>
+  </head>
+  <body>
+    <div id="preloader"></div>
+    <nav class="navigation" id="navigation">
+      <div class="navigation__logobox">
+        <img src="./img/Logo.png" />
+        <span class="navigation__logobox--text">odeFarm.</span>
+      </div>
+      <div class="navigation__nav-items">
+        <ul>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#skills">SKills</a>
+          </li>
+          <li>
+            <a href="#services">Services</a>
+          </li>
+          <li>
+            <a href="./pages/projects.html"> Projects</a>
+          </li>
+          <li>
+            <a href="./pages/blogs.html">Blog</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+          <li>
+            <button class="navigation__nav-items--loginbtn btn" id="showLogin">
+              Login
+            </button>
+          </li>
+          <li>
+            <button
+              class="navigation__nav-items--signupbtn btn"
+              id="showSingup"
+            >
+              Signup
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="modal" id="hide">
+        <div class="modal__header">
+          <div class="authentication__form">
+            <form>
+              <div>
+                <input
+                  type="text"
+                  id="fullname"
+                  name="fullname"
+                  placeholder="Full Name"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="password"
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  id="confirm"
+                  name="confirm Password"
+                  placeholder="confirm Password"
+                  required
+                />
+              </div>
+              <div>
+                <button class="send__btn">Login</button>
+              </div>
+            </form>
+          </div>
+          <button class="modal__close-btn" id="hide__icon">
+            <span class="material-icons"> close </span>
+          </button>
+        </div>
+        <div class="social__login">
+          <div class="social__login__goolge">
+            <img src="./img/google.png" />
+            <div><span>SignIn with Google</span></div>
+          </div>
+          <div class="social__login__facebok">
+            <img src="./img/facebk.png" />
+            <div><span>SignIn with Facebook</span></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <header class="header" id="about">
+      <div class="aboutme">
+        <div class="aboutme__description">
+          <h1 class="aboutme__primary--heading">ABOUT ME</h1>
+          <p class="aboutme__paragraph">
+            Hello!, I am Jean De Dieu UKWITEGETSE, a Full Stack Web developer
+            extensively on building MERN STACK Applications, react, redux and
+            Firebase- Cloud Firestore Applications. I am passionate about
+            expanding my horizons to projects looking for software development
+            support and consultancy. I am too dynamic for ﬁnding technological
+            solutions by getting my hands dirty with coding.
+          </p>
+
+          <button class="aboutme__hirebtn">Hire me</button>
+        </div>
+        <div class="aboutme__profile-picture">
+          <img src="./img/Jado.jpeg" />
+        </div>
+      </div>
+    </header>
+    <main class="main__contents" id="main">
+      <section class="skills" id="skills">
+        <h2 class="heading__primary">Skills</h2>
+
+        <div class="skills__card-container">
+          <div class="skill__card card1">
+            <div class="skills__card-img">
+              <img src="./img/html.png" alt="html" />
+            </div>
+            <div class="skills__title">
+              <h3 class="skills__title-heading1">HTML</h3>
+              <div class="skills__title-heading1"><span>10 project</span></div>
+            </div>
+          </div>
+          <div class="skill__card card2">
+            <div class="skills__card-img">
+              <img src="./img/css.png" alt="html" />
+            </div>
+            <div class="skills__title">
+              <h3 class="skills__title-heading2">CSS</h3>
+              <div class="skills__title-heading2"><span>10 project</span></div>
+            </div>
+          </div>
+          <div class="skill__card card3">
+            <div class="skills__card-img">
+              <img src="./img/javascript.png" alt="html" />
+            </div>
+            <div class="skills__title">
+              <h3 class="skills__title-heading3">JAVASCRIPT</h3>
+              <div class="skills__title-heading3"><span>10 project</span></div>
+            </div>
+          </div>
+          <div class="skill__card card4">
+            <div class="figma-icon">
+              <img src="./img/figma.png" alt="html" />
+            </div>
+            <div class="skills__title">
+              <h3 class="skills__title-heading4">FIGMA</h3>
+              <div class="skills__title-heading4"><span>10 project</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="services" id="services">
+        <div class="services__container">
+          <h2 class="service__heading">Services</h2>
+          <div class="services__row">
+            <div class="services__card service__card1">
+              <span class="material-icons service__icons"> backup_table </span>
+              <span class="service__title">UI/UX DESIGN</span>
+
+              <p class="service__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                debitis incidunt laboriosam assumenda, provident laudantium
+                placeat, quidem repudiandae rem voluptatibus veritatis ratione
+                et in porro illo aspernatur eaque nesciunt
+              </p>
+              <button class="service__btn">Contact me</button>
+            </div>
+            <div class="services__card service__card2">
+              <span class="material-icons service__icons"> view_quilt </span>
+              <span class="service__title">WEB DEVELOPMENT</span>
+
+              <p class="service__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                debitis incidunt laboriosam assumenda, provident laudantium
+                placeat, quidem repudiandae rem voluptatibus veritatis ratione
+                et in porro illo aspernatur eaque nesciunt
+              </p>
+              <button class="service__btn">Contact me</button>
+            </div>
+            <div class="services__card service__card3">
+              <span class="material-icons service__icons"> phone_iphone </span>
+              <span class="service__title">MOBILE APP DESIGN</span>
+
+              <p class="service__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                debitis incidunt laboriosam assumenda, provident laudantium
+                placeat, quidem repudiandae rem voluptatibus veritatis ratione
+                et in porro illo aspernatur eaque nesciunt
+              </p>
+              <button class="service__btn">Contact me</button>
+            </div>
+          </div>
+          <div class="services__row">
+            <div class="services__card service__card1">
+              <span class="material-icons service__icons"> view_in_ar </span>
+              <span class="service__title"> PRODUCT DESIGN</span>
+
+              <p class="service__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                debitis incidunt laboriosam assumenda, provident laudantium
+                placeat, quidem repudiandae rem voluptatibus veritatis ratione
+                et in porro illo aspernatur eaque nesciunt
+              </p>
+              <button class="service__btn">Contact me</button>
+            </div>
+            <div class="services__card service__card2">
+              <span class="material-icons service__icons"> video_library </span>
+              <span class="service__title">VIDEO EDITTING</span>
+
+              <p class="service__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                debitis incidunt laboriosam assumenda, provident laudantium
+                placeat, quidem repudiandae rem voluptatibus veritatis ratione
+                et in porro illo aspernatur eaque nesciunt
+              </p>
+              <button class="service__btn">Contact me</button>
+            </div>
+            <div class="services__card service__card3">
+              <span class="material-icons service__icons"> computer </span>
+              <span class="service__title">IT CONSULTANCY</span>
+
+              <p class="service__description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                debitis incidunt laboriosam assumenda, provident laudantium
+                placeat, quidem repudiandae rem voluptatibus veritatis ratione
+                et in porro illo aspernatur eaque nesciunt
+              </p>
+              <button class="service__btn">Contact me</button>
+            </div>
+          </div>
+          <div class="service__explore">
+            <h4 class="service__explore-heading">
+              Explore more via my channel.
+            </h4>
+            <iframe
+              class="service__youtube"
+              src="https://www.youtube.com/embed/BO4vWNifUTA?list=UUoQT0PapNz1C4N_j-bFpOtg"
+            >
+            </iframe>
+          </div>
+        </div>
+      </section>
+      <section class="projects" id="projects">
+        <h2 class="heading__primary">Projects</h2>
+        <div class="project__card__container">
+          <div class="projects__card">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1477647966959-5a95d41d625a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              />
+              <figcaption>
+                <div class="project__overlay">
+                  <div class="projects__description">
+                    <div class="projects__title"><span>Project Name</span></div>
+                    <div class="projects__link">
+                      <a href="#" class="projects__link-btn">
+                        <div class="link__container">
+                          <img src="./img/Projectbtn.png" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="projects__card">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1457295767206-0cb0658056cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGhhbmQlMjBkcmF3aW5nc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+              />
+              <figcaption>
+                <div class="project__overlay">
+                  <div class="projects__description">
+                    <div class="projects__title"><span>Project Name</span></div>
+                    <div class="projects__link">
+                      <a href="#" class="projects__link-btn">
+                        <div class="link__container">
+                          <img src="./img/Projectbtn.png" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="projects__card">
+            <figure>
+              <img
+                src="https://images.unsplash.com/photo-1569309338532-a0c01062acc8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGhhbmQlMjBkcmF3aW5nc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+              />
+              <figcaption>
+                <div class="project__overlay">
+                  <div class="projects__description">
+                    <div class="projects__title"><span>Project Name</span></div>
+                    <div class="projects__link">
+                      <a href="#" class="projects__link-btn">
+                        <div class="link__container">
+                          <img src="./img/Projectbtn.png" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section class="blogs" id="blog">
+        <h2 class="heading__primary">MY BLOGS</h2>
+        <div class="blogs__container">
+          <div class="blog__card-description">
+            <h4 class="blog__title">What is Lorem ?</h4>
+            <p class="blogs__description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+              debitis incidunt laboriosam assumenda, provident laudantium
+              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
+              in porro illo aspernatur eaque nesciunt
+            </p>
+            <div class="blogs__actions">
+              <div class="blogs__author"><span>Author</span></div>
+              <div class="blogs__author__name"><span>Jeanndo</span></div>
+              <div class="blogs__comments">
+                <figure>
+                  <img src="./img/greencomment.png" alt="comment" />
+                  <figcaption>
+                    <div class="blogs__comments-number">5</div>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <div class="blog__card-picture">
+            <img
+              src="https://cdn.pixabay.com/photo/2017/03/04/12/15/programming-2115930_960_720.jpg"
+              alt="blog"
+            />
+          </div>
+        </div>
+        <div class="blogs__container">
+          <div class="blog__card-description">
+            <h4 class="blog__title">What is Lorem ?</h4>
+            <p class="blogs__description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+              debitis incidunt laboriosam assumenda, provident laudantium
+              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
+              in porro illo aspernatur eaque nesciunt
+            </p>
+            <div class="blogs__actions">
+              <div class="blogs__author"><span>Author</span></div>
+              <div class="blogs__author__name"><span>Jeanndo</span></div>
+              <div class="blogs__comments">
+                <figure>
+                  <img src="./img/greencomment.png" alt="comment" />
+                  <figcaption>
+                    <div class="blogs__comments-number">5</div>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <div class="blog__card-picture">
+            <img
+              src="https://cdn.pixabay.com/photo/2019/11/05/17/56/employee-4604126_960_720.jpg"
+              alt="blog"
+            />
+          </div>
+        </div>
+        <div class="blogs__container">
+          <div class="blog__card-description">
+            <h4 class="blog__title">What is Lorem ?</h4>
+            <p class="blogs__description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+              debitis incidunt laboriosam assumenda, provident laudantium
+              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
+              in porro illo aspernatur eaque nesciunt
+            </p>
+            <div class="blogs__actions">
+              <div class="blogs__author"><span>Author</span></div>
+              <div class="blogs__author__name"><span>Jeanndo</span></div>
+              <div class="blogs__comments">
+                <figure>
+                  <img src="./img/greencomment.png" alt="comment" />
+                  <figcaption>
+                    <div class="blogs__comments-number">5</div>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+          <div class="blog__card-picture">
+            <img
+              src="https://cdn.pixabay.com/photo/2017/07/31/14/45/code-2558220_960_720.jpg"
+              alt="blog"
+            />
+          </div>
+        </div>
+        <div class="loadmore">
+          <button class="loadmore__btn">
+            <a href="./pages/blogs.html" class="readmore__link">Loadmore...</a>
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" id="contact">
+      <div class="footer__titles__container">
+        <div class="footer__title"><span>Let&rsquo;s Talk</span></div>
+        <div class="footer__title">
+          <div class="footer__logobox">
+            <img src="./img/Logo.png" />
+            <span class="footer__logobox--text">odeFarm.</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer__contact__container">
+        <div class="footer__contact__form">
+          <form>
+            <div>
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Full Name"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+                required
+              />
+            </div>
+            <div>
+              <textarea
+                class="message__box"
+                placeholder="Your message please!"
+                id="message"
+                name="message"
+                cols="30"
+                rows="10"
+                required
+              ></textarea>
+            </div>
+            <div>
+              <button class="send__btn">Send It</button>
+            </div>
+          </form>
+        </div>
+        <div class="contact__info">
+          <div class="contact__info__overlay">
+            <h4 class="contact__info-heading">Contact Info</h4>
+            <div class="underline__info">&nbsp;</div>
+            <div class="contact__info-items">
+              <div class="contact__info-item">
+                <span>Location: Kigali</span>
+              </div>
+              <div class="contact__info-item">
+                <span>Eamil:ukwjeandedieu1@gmail.com</span>
+              </div>
+              <div class="contact__info-item">
+                <span>Phone:+250784860836</span>
+              </div>
+              <div class="contact__info-item">
+                <span>Github:Github:https://github.com/Jeanndo</span>
+              </div>
+            </div>
+          </div>
+          <div class="socialmedia">
+            <h4 class="socialmedia__heading">Follow me 🖒</h4>
+            <div class="underline__socialmedia__heading">&nbsp;</div>
+            <div class="followme">
+              <div class="followme__icon">
+                <a href="#"> <img src="./img/twitter.png" /></a>
+              </div>
+              <div class="followme__icon">
+                <a href="#"> <img src="./img/linkedin.png" /></a>
+              </div>
+              <div class="followme__icon">
+                <a href="#"> <img src="./img/instagram.png" /></a>
+              </div>
+              <div class="followme__icon">
+                <a href="#"> <img src="./img/facebook.png" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="subscribe">
+        <form>
+          <div class="subscribe__field">
+            <input
+              type="text"
+              id="subcribe"
+              placeholder="Your email please!"
+              name="subscribe"
+              required
+            />
+            <button type="submit" class="subscribe__btn">
+              Can&rsquo;t wait to subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="quicklinks">
+        <ul>
+          <li><a href="#skills">SKILLS</a></li>
+          <li><a href="#services">SERVICES</a></li>
+          <li><a href="#projects">PROJETCS</a></li>
+          <li><a href="#blog">BLOGS</a></li>
+          <li><a href="#about">ABOUT ME</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      var loader = document.getElementById("preloader")
+      window.addEventListener("load", () => {
+        loader.style.display = "none"
+      })
+    </script>
+    <script type="text/javascript" src="./Javascript/authModal.js"></script>
+  </body>
+</html>
