@@ -14,7 +14,7 @@ body {
 }
 /* *Preloader* */
 #preloader {
-  background: #28b485 url(/img/freeback.gif) no-repeat center center;
+  background: #28b485 url(../img/freeback.gif) no-repeat center center;
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -109,14 +109,20 @@ body {
   margin-top: 100px;
 }
 .container__search-container {
-  position: absolute;
+  position: relative;
   background-color: #28b485;
-  width: 705px;
-  top: 100px;
-  left: 350px;
+  width: 100%;
+}
+.search__fields {
+  position: absolute;
+  width: 80%;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
 }
 .container__search-container input {
-  width: 500px;
+  width: 60%;
   height: 40px;
   background: #ffffff;
   border: 2px solid #28b485;
@@ -124,8 +130,9 @@ body {
   text-indent: 10px;
 }
 .container__search-btn {
+  margin-left: -5px;
   border-style: none;
-  width: 200px;
+  width: 20%;
   height: 40px;
   background-color: #28b485;
   color: #ffffff;
@@ -479,4 +486,318 @@ body {
   text-decoration: none;
   color: #ffffff;
   margin-right: 20px;
+}
+
+/* *MEDIA QUERRIES* */
+
+@media (max-width: 1204px) {
+  .navigation__logobox img {
+    width: 90px;
+    height: 50px;
+  }
+  .navigation__nav-items {
+    left: 280px;
+  }
+  .navigation__nav-items ul li {
+    margin-right: 10px;
+  }
+  .navigation__nav-items ul li a {
+    font-size: 14px;
+  }
+
+  .readbtn {
+    margin-left: 300px;
+  }
+  .blogs {
+    padding: 0px 50px;
+  }
+  .blogs__container {
+    width: 950px;
+  }
+  .contact__info-heading {
+    left: 160px;
+    font-size: 20px;
+  }
+  .contact__info-items {
+    left: 150px;
+  }
+  .socialmedia {
+    left: 660px;
+  }
+  .socialmedia__heading {
+    font-size: 20px;
+  }
+
+  .footer__logobox {
+    left: 700px;
+  }
+
+  .underline__info {
+    left: 185px;
+    width: 150px;
+  }
+  .underline__socialmedia__heading {
+    width: 140px;
+    margin-left: 20px;
+  }
+  .subscribe__field {
+    width: 750px;
+    background-color: #ffffff;
+    margin-left: 40px;
+  }
+  .subscribe input {
+    width: 400px;
+  }
+  .subscribe input {
+    width: 400px;
+    height: 100%;
+  }
+  .subscribe__btn {
+    width: 346.5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation__nav-items {
+    display: none;
+  }
+  .navigation__logobox {
+    top: -10px;
+    left: 15px;
+  }
+  .container__search-container {
+    left: 30px;
+  }
+  .readbtn {
+    margin-left: 300px;
+  }
+  .blogs__container {
+    flex-direction: column-reverse;
+    width: 100%;
+    padding: 10px;
+  }
+  .blogs__container:not(:last-of-type) {
+    margin-bottom: 50px;
+  }
+  .blog__card-description {
+    padding: 10px;
+  }
+  .blog__card-picture img {
+    width: 100%;
+    height: 400px;
+    margin-left: 0px;
+    object-fit: cover;
+  }
+  .footer {
+    padding: 0px 0px 20px 0px;
+  }
+  .footer__titles__container {
+    padding: 0px 40px;
+  }
+  .footer__titles__container .footer__title {
+    font-size: 35px;
+    line-height: 56px;
+  }
+  .footer__logobox {
+    top: 0px;
+    left: 550px;
+  }
+  .footer__contact__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0px 50px;
+  }
+  .footer__contact__form {
+    width: 100%;
+    border-radius: 0px;
+  }
+  .contact__info {
+    width: 100%;
+    height: 100vh;
+  }
+  .contact__info-heading {
+    top: 10px;
+    left: 50px;
+    font-size: 20px;
+  }
+  .underline__info {
+    display: none;
+  }
+  .underline__socialmedia__heading {
+    display: none;
+  }
+  .contact__info-items {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+  }
+  .contact__info__overlay {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .socialmedia {
+    position: absolute;
+    top: 760px;
+    left: 100px;
+  }
+  .subscribe__field {
+    width: 603.2px;
+    margin-left: 80px;
+  }
+  .subscribe__btn {
+    width: 200px;
+  }
+  .quicklinks {
+    margin: 20px 0px 0px 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .readbtn {
+    margin-left: 50px;
+  }
+  .search__fields {
+    top: 10%;
+    left: 40%;
+  }
+  .contact__info-items {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+  }
+  .socialmedia {
+    position: absolute;
+    top: 700px;
+    left: 70px;
+  }
+
+  .followme {
+    display: flex;
+    margin-top: 20px;
+  }
+  .contact__info-heading {
+    top: 40px;
+    left: 50px;
+    font-size: 20px;
+  }
+  .blogs {
+    padding: 0px 20px;
+  }
+  .blog__card-picture img {
+    width: 100%;
+    height: auto;
+  }
+  .blog__card-description {
+    height: 100%;
+  }
+  .footer__contact__container {
+    padding: 0px 20px;
+  }
+  .footer__contact__form form {
+    padding: 20px;
+  }
+  .subscribe {
+    padding: 0px 20px;
+  }
+  .subscribe__field {
+    width: 100%;
+    margin-left: 0px;
+  }
+  .subscribe input {
+    width: 281.5px;
+    height: 100%;
+  }
+  .subscribe__btn {
+    width: 100px;
+  }
+  .quicklinks {
+    margin: 20px 0px 0px 10px;
+  }
+  .quicklinks ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+  .footer__titles__container {
+    padding: 0px 20px;
+  }
+  .footer__logobox {
+    top: 0px;
+    left: 220px;
+  }
+  .skills__heading {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .readbtn {
+    margin-left: 30px;
+    padding: 2px;
+    font-size: 12px;
+  }
+  .footer__logobox {
+    top: 0px;
+    left: 200px;
+  }
+  .subscribe input {
+    width: 231.5px;
+  }
+  .quicklinks ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-right: 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container .container__primary-heading {
+    font-size: 16px;
+    margin-top: 100px;
+  }
+  .search__fields {
+    width: 100%;
+    top: 10%;
+    left: 40%;
+  }
+  .footer__titles__container .footer__title {
+    font-size: 20px;
+    line-height: 56px;
+  }
+  .footer__logobox img {
+    width: 80px;
+    height: 50px;
+  }
+  .footer__logobox--text {
+    font-size: 25px;
+    top: 5px;
+    left: 40px;
+  }
+  .blogs__actions {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .blogs__actions .blogs__author span {
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+  .footer__logobox {
+    top: 0px;
+    left: 140px;
+  }
+  .contact__info-item {
+    font-size: 10px;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  .subscribe input {
+    width: 176.5px;
+  }
+  .quicklinks ul li a {
+    margin-right: 5px;
+    font-size: 10px;
+  }
 }

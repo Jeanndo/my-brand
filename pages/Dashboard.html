@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+    <link
+      href="https://cdn.quilljs.com/1.0.5/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./../css/dashboard.css" />
+    <title>..:: My Brand ::..</title>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <script src="tinymce/tinymce.min.js"></script>
+    <script>
+      tinymce.init({
+        selector: "textarea#myTextarea",
+        plugins:
+          "print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons",
+        imagetools_cors_hosts: ["picsum.photos"],
+        menubar: "file edit view insert format tools table help",
+        toolbar:
+          "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl",
+        toolbar_sticky: true,
+        autosave_ask_before_unload: true,
+        autosave_interval: "30s",
+        autosave_prefix: "{path}{query}-{id}-",
+        autosave_restore_when_empty: false,
+        autosave_retention: "2m",
+        image_advtab: true,
+        /*content_css: '//www.tiny.cloud/css/codepen.min.css',*/
+        link_list: [
+          { title: "My page 1", value: "https://www.codexworld.com" },
+          { title: "My page 2", value: "https://www.xwebtools.com" },
+        ],
+        image_list: [
+          { title: "My page 1", value: "https://www.codexworld.com" },
+          { title: "My page 2", value: "https://www.xwebtools.com" },
+        ],
+        image_class_list: [
+          { title: "None", value: "" },
+          { title: "Some class", value: "class-name" },
+        ],
+        importcss_append: true,
+        file_picker_callback: function (callback, value, meta) {
+          /* Provide file and text for the link dialog */
+          if (meta.filetype === "file") {
+            callback("https://www.google.com/logos/google.jpg", {
+              text: "My text",
+            })
+          }
+
+          /* Provide image and alt text for the image dialog */
+          if (meta.filetype === "image") {
+            callback("https://www.google.com/logos/google.jpg", {
+              alt: "My alt text",
+            })
+          }
+
+          /* Provide alternative source and posted for the media dialog */
+          if (meta.filetype === "media") {
+            callback("movie.mp4", {
+              source2: "alt.ogg",
+              poster: "https://www.google.com/logos/google.jpg",
+            })
+          }
+        },
+        templates: [
+          {
+            title: "New Table",
+            description: "creates a new table",
+            content:
+              '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>',
+          },
+          {
+            title: "Starting my story",
+            description: "A cure for writers block",
+            content: "Once upon a time...",
+          },
+          {
+            title: "New list with dates",
+            description: "New List with dates",
+            content:
+              '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>',
+          },
+        ],
+        template_cdate_format: "[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]",
+        template_mdate_format: "[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]",
+        height: 250,
+        image_caption: true,
+        quickbars_selection_toolbar:
+          "bold italic | quicklink h2 h3 blockquote quickimage quicktable",
+        noneditable_noneditable_class: "mceNonEditable",
+        toolbar_mode: "sliding",
+        contextmenu: "link image imagetools table",
+      })
+
+      // tinymce -
+      //   wysiwyg -
+      //   editor -
+      //   plugin -
+      //   advanced -
+      //   full -
+      //   featured -
+      //   codexworld
+    </script>
+  </head>
+  <body>
+    <div id="preloader"></div>
+    <!-- Toolbar Begins-->
+    <div class="dashboard">
+      <div class="dashboard__toolbar" id="toolbar">
+        <div class="dashboard__toolbar__menu">
+          <span class="material-icons" id="menu"> menu </span>
+          <span class="material-icons secondMenu" id="menu1"> menu </span>
+          <div class="logo">
+            <img src="./../img/Logo.png" alt="" />
+          </div>
+        </div>
+        <div class="dashboard__toolbar__text">
+          <h1 class="dashboard__toolbar__heading">Codemoon.</h1>
+        </div>
+        <div class="dashboard__toolbar__actions">
+          <div class="dashboard__toolbar__actions__avatar">
+            <img
+              src="https://media-exp1.licdn.com/dms/image/C4D03AQHfiJUDxoQhgw/profile-displayphoto-shrink_800_800/0/1603820615070?e=1650499200&v=beta&t=8oRTmlTiTdQAxrbFpvqsMjjKRIu6bm2kfM33HnVL0jM"
+              alt=""
+            />
+          </div>
+          <div class="dashboard__toolbar__action__settings">
+            <span class="material-icons"> notifications </span>
+            <span class="notifications">10</span>
+          </div>
+          <div>
+            <button class="logout__btn">Logout</button>
+          </div>
+        </div>
+      </div>
+      <main class="dashboard__contents">
+        <div class="dashboard__sidebar" id="sidebar">
+          <div class="side__Icons">
+            <div id="user__button">
+              <span
+                class="iconify"
+                data-icon="ant-design:user-outlined"
+                style="color: white"
+              ></span>
+            </div>
+            <div id="blog__button">
+              <span
+                class="iconify blogs__icon"
+                data-icon="carbon:blog"
+                style="color: white"
+              ></span>
+            </div>
+            <div id="project__button">
+              <span
+                class="iconify projects__icon"
+                data-icon="ph:projector-screen-chart"
+                style="color: white"
+              ></span>
+            </div>
+          </div>
+          <ul id="list">
+            <li id="userTab">
+              <a href="#">
+                <div class="items__button">
+                  <span class="label">Users</span>
+                </div>
+              </a>
+            </li>
+            <li id="blogTab">
+              <a href="#">
+                <div class="items__button">
+                  <span class="label">Blogs</span>
+                </div>
+              </a>
+            </li>
+            <li id="projectTab">
+              <a href="#">
+                <div class="items__button">
+                  <span class="label">Projects</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dashboard__main_body" id="main">
+          <div id="user__form">
+            <h2>USERS</h2>
+          </div>
+          <!-- BLOG EDITOR -->
+          <div class="create__dashboard__blog" id="blog__form">
+            <div class="form__container">
+              <form>
+                <div class="text__input__container">
+                  <input type="text" placeholder="Title" required id="Title" />
+                </div>
+                <div class="text__input__container">
+                  <input
+                    type="text"
+                    placeholder="Image url"
+                    required
+                    id="blog__imgurl"
+                  />
+                </div>
+                <div class="text__input__container">
+                  <input
+                    type="text"
+                    placeholder="Author"
+                    required
+                    id="author"
+                  />
+                </div>
+                <textarea
+                  class="blog__description"
+                  name="myTextarea"
+                  id="myTextarea"
+                  required
+                ></textarea>
+                <div class="btn__container">
+                  <button
+                    type="submit"
+                    class="create__btn"
+                    id="create__blog_btn"
+                  >
+                    Create
+                  </button>
+                </div>
+              </form>
+            </div>
+            <section class="blogs" id="blog">
+              <div class="blogs__container">
+                <div class="blog__card-description">
+                  <h4 class="blog__title">What is Lorem ?</h4>
+                  <p class="blogs__description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ducimus debitis incidunt laboriosam assumenda, provident
+                    laudantium placeat, quidem repudiandae rem voluptatibus
+                    veritatis ratione et in porro illo aspernatur eaque nesciunt
+                  </p>
+                  <div class="blogs__actions">
+                    <div class="blogs__author"><span>Author</span></div>
+                    <div class="blogs__author__name"><span>Jeanndo</span></div>
+                    <button class="edit__btn btn">
+                      <span class="material-icons"> edit </span>
+                    </button>
+                    <button class="delete__btn btn">
+                      <span class="material-icons"> delete </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="blog__card-picture">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2017/03/04/12/15/programming-2115930_960_720.jpg"
+                    alt="blog"
+                  />
+                </div>
+              </div>
+              <div class="blogs__container">
+                <div class="blog__card-description">
+                  <h4 class="blog__title">What is Lorem ?</h4>
+                  <p class="blogs__description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Ducimus debitis incidunt laboriosam assumenda, provident
+                    laudantium placeat, quidem repudiandae rem voluptatibus
+                    veritatis ratione et in porro illo aspernatur eaque nesciunt
+                  </p>
+                  <div class="blogs__actions">
+                    <div class="blogs__author"><span>Author</span></div>
+                    <div class="blogs__author__name"><span>Jeanndo</span></div>
+                    <button class="edit__btn btn">
+                      <span class="material-icons"> edit </span>
+                    </button>
+                    <button class="delete__btn btn">
+                      <span class="material-icons"> delete </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="blog__card-picture">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2017/03/04/12/15/programming-2115930_960_720.jpg"
+                    alt="blog"
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- PROJECTS -->
+          <div class="create__dashboard__project" id="projects__form">
+            <div class="form__container">
+              <form>
+                <div class="text__input__container">
+                  <input
+                    type="text"
+                    placeholder="Image"
+                    required
+                    id="image_url"
+                  />
+                </div>
+                <div class="text__input__container">
+                  <input
+                    type="text"
+                    placeholder="Project Name"
+                    required
+                    id="projectName"
+                  />
+                </div>
+                <div class="text__input__container">
+                  <input
+                    type="Number"
+                    placeholder="Price"
+                    required
+                    id="project__price"
+                  />
+                </div>
+                <div class="text__input__container">
+                  <input
+                    type="text"
+                    placeholder="Link"
+                    required
+                    id="project__link"
+                  />
+                </div>
+                <div class="btn__container">
+                  <button type="submit" class="create__btn" id="create__btn">
+                    Create
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="dashboard__project__card__row">
+              <div class="project__card">
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
+                  alt=""
+                />
+                <div class="project__actions">
+                  <button class="edit__btn btn">
+                    <span class="material-icons"> edit </span>
+                  </button>
+                  <button class="delete__btn btn">
+                    <span class="material-icons"> delete </span>
+                  </button>
+                </div>
+              </div>
+              <div class="project__card">
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
+                  alt=""
+                />
+                <div class="project__actions">
+                  <button class="edit__btn btn">
+                    <span class="material-icons"> edit </span>
+                  </button>
+                  <button class="delete__btn btn">
+                    <span class="material-icons"> delete </span>
+                  </button>
+                </div>
+              </div>
+              <div class="project__card">
+                <img
+                  src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
+                  alt=""
+                />
+                <div class="project__actions">
+                  <button class="edit__btn btn">
+                    <span class="material-icons"> edit </span>
+                  </button>
+                  <button class="delete__btn btn">
+                    <span class="material-icons"> delete </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <script src="./../Javascript/dashboard.js"></script>
+  </body>
+</html>

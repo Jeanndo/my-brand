@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+
+    <link rel="stylesheet" href="./../css/signup.css" />
+    <title>..:: My Brand ::..</title>
+  </head>
+  <body>
+    <div id="preloader"></div>
+    <nav class="navigation" id="navigation">
+      <a href="./../index.html">
+        <div class="navigation__logobox">
+          <img src="./../img/Logo.png" />
+          <span class="navigation__logobox--text">odemoon.</span>
+        </div>
+      </a>
+      <div class="navigation__nav-items">
+        <ul>
+          <li>
+            <a href="./../index.html">Home</a>
+          </li>
+          <li>
+            <a href="./../index.html">SKills</a>
+          </li>
+          <li>
+            <a href="./../index.html">Services</a>
+          </li>
+          <li>
+            <a href="./../pages/projects.html"> Projects</a>
+          </li>
+          <li>
+            <a href="./../pages/blogs.html">Blog</a>
+          </li>
+          <li>
+            <a href="./../index.html">About</a>
+          </li>
+          <li>
+            <a href="./../index.html">Contact</a>
+          </li>
+          <li>
+            <a href="./../pages/Login.html">
+              <button
+                class="navigation__nav-items--loginbtn btn"
+                id="showLogin"
+              >
+                Login
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="./Signup.html">
+              <button
+                class="navigation__nav-items--signupbtn btn"
+                id="showSingup"
+              >
+                Signup
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="modal" id="hide">
+      <div class="modal__header">
+        <div class="authentication__form">
+          <form>
+            <div>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                required
+              />
+            </div>
+            <div>
+              <button type="submit" class="send__btn" id="signup__btn">
+                Signup
+              </button>
+            </div>
+          </form>
+          <div class="Auth__actions">
+            <div class="noaccount">
+              <span>Have Account?</span>
+              <a href="./../pages/Login.html"><strong> Login</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="social__login">
+        <div class="social__login__goolge" id="google_signup__btn">
+          <img src="./../img/google.png" />
+          <div><span>Signup with Google</span></div>
+        </div>
+        <div class="social__login__facebok">
+          <img src="./../img/facebk.png" />
+          <div><span>Signup with Facebook</span></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var loader = document.getElementById("preloader")
+      window.addEventListener("load", () => {
+        loader.style.display = "none"
+      })
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <script src="./../Javascript/Signup.js"></script>
+  </body>
+</html>
