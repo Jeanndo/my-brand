@@ -1,21 +1,30 @@
 // @ts-nocheck
-const firebaseConfig = {
-  apiKey: "AIzaSyDH5lFS8x2vtrvg70AmGNmSuHIDrnUnu48",
-
-  authDomain: "mybrand-998e8.firebaseapp.com",
-
-  projectId: "mybrand-998e8",
-
-  storageBucket: "mybrand-998e8.appspot.com",
-
-  messagingSenderId: "466642224284",
-
-  appId: "1:466642224284:web:a59e7a35f0e5da75a55959",
-}
-
-firebase.initializeApp(firebaseConfig)
 
 const db = firebase.firestore()
+
+// TOAST
+const Toast = {
+  init() {
+    this.hideTimemout = null
+
+    this.el = document.createElement("div")
+    this.el.className = "toast"
+    document.body.appendChild(this.el)
+  },
+  show(message, state) {
+    clearTimeout(this.hideTimemout)
+    this.el.textContent = message
+    this.el.className = "toast toast__visible"
+    if (state) {
+      this.el.classList.add(`toast__${state}`)
+    }
+    this.hideTimemout = setTimeout(() => {
+      this.el.classList.remove("toast__visible")
+    }, 300)
+  },
+}
+
+document.addEventListener("DOMContentLoaded", () => Toast.init())
 
 // CREATE CONTACT INFO
 
@@ -44,5 +53,6 @@ const createContact = (event) => {
   email.value = ""
   subject.value = ""
   message.value = ""
+  Toast.show("Created", "success")
 }
 document.getElementById("contact__btn").addEventListener("click", createContact)

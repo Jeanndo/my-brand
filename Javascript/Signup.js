@@ -1,24 +1,8 @@
 // @ts-nocheck
-const firebaseConfig = {
-  apiKey: "AIzaSyDH5lFS8x2vtrvg70AmGNmSuHIDrnUnu48",
-
-  authDomain: "mybrand-998e8.firebaseapp.com",
-
-  projectId: "mybrand-998e8",
-
-  storageBucket: "mybrand-998e8.appspot.com",
-
-  messagingSenderId: "466642224284",
-
-  appId: "1:466642224284:web:a59e7a35f0e5da75a55959",
-}
-
-firebase.initializeApp(firebaseConfig)
-
 const signup_Btn = document.getElementById("signup__btn")
 
 signup_Btn.addEventListener("click", (event) => {
-  // GET DOM ELEMENTS BY IDS
+  // GET DOM ELEMENTS BY IDs
 
   event.preventDefault()
   let email = document.getElementById("email")
@@ -70,9 +54,8 @@ const googleAuth = () => {
     .then((result) => {
       let credential = result.credential
       let token = credential.accessToken
-      // console.log(token)
       let user = result.user
-      // console.log("user", user)
+      console.log("user", user)
       const { xa, email, displayName, photoURL, uid } = user
       console.log(xa, email, displayName, photoURL, uid)
 
@@ -82,14 +65,16 @@ const googleAuth = () => {
           token: xa,
           email: email,
           name: displayName,
-          photo: photoURL,
+          photoURL,
           userId: uid,
         })
       )
       if (
-        JSON.parse(localStorage.getItem("GoogleAuth")).token &&
+        (JSON.parse(localStorage.getItem("GoogleAuth")).token &&
+          JSON.parse(localStorage.getItem("GoogleAuth")).email ===
+            "ukjeando@gmail.com") ||
         JSON.parse(localStorage.getItem("GoogleAuth")).email ===
-          "ukjeando@gmail.com"
+          "ukwjeandedieu1@gmail.com"
       ) {
         location.href = "./../pages/Dashboard.html"
       } else {
@@ -105,21 +90,8 @@ const googleAuth = () => {
 
       let credential = error.credential
     })
-  // location.href = "./../pages/Dashboard.html"
 }
 
 document
   .getElementById("google_signup__btn")
   .addEventListener("click", googleAuth)
-
-// const signout = () => {
-//     firebase
-//       .auth()
-//       .signOut()
-//       .then(() => {
-//         // Sign-out successful.
-//       })
-//       .catch((error) => {
-//         // An error happened.
-//       })
-//   }
