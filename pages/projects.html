@@ -24,10 +24,12 @@
   <body>
     <div id="preloader"></div>
     <nav class="navigation">
-      <div class="navigation__logobox">
-        <img src="../img/Logo.png" />
-        <span class="navigation__logobox--text">odeFarm.</span>
-      </div>
+      <a href="./../index.html">
+        <div class="navigation__logobox">
+          <img src="../img/Logo.png" />
+          <span class="navigation__logobox--text">odemoon.</span>
+        </div>
+      </a>
       <div class="navigation__nav-items">
         <ul>
           <li>
@@ -52,10 +54,16 @@
             <a href="#contact">Contact</a>
           </li>
           <li>
-            <button class="navigation__nav-items--loginbtn btn">Login</button>
+            <a href="./../pages/Login.html">
+              <button class="navigation__nav-items--loginbtn btn">Login</button>
+            </a>
           </li>
           <li>
-            <button class="navigation__nav-items--signupbtn btn">Signup</button>
+            <a href="./../pages/Signup.html">
+              <button class="navigation__nav-items--signupbtn btn">
+                Signup
+              </button>
+            </a>
           </li>
         </ul>
       </div>
@@ -210,7 +218,7 @@
         <div class="footer__title">
           <div class="footer__logobox">
             <img src="../img/Logo.png" />
-            <span class="footer__logobox--text">odeFarm.</span>
+            <span class="footer__logobox--text">odemoon.</span>
           </div>
         </div>
       </div>
@@ -256,7 +264,7 @@
               ></textarea>
             </div>
             <div>
-              <button class="send__btn">Send It</button>
+              <button class="send__btn" id="contact__btn">Send It</button>
             </div>
           </form>
         </div>
@@ -309,9 +317,7 @@
               name="subscribe"
               required
             />
-            <button type="submit" class="subscribe__btn">
-              Can&rsquo;t wait to subscribe
-            </button>
+            <button type="submit" class="subscribe__btn">Subscribe</button>
           </div>
         </form>
       </div>
@@ -331,5 +337,10 @@
         loader.style.display = "none"
       })
     </script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <script src="./../Javascript/contactme.js"></script>
   </body>
 </html>
