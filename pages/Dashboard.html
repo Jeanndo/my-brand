@@ -249,6 +249,13 @@
                   >
                     Create
                   </button>
+                  <button
+                    type="submit"
+                    class="create__btn update__btn"
+                    id="update__blog_btn"
+                  >
+                    Update
+                  </button>
                   <span id="uploading__blog__process" class="uplaoding"></span>
                 </div>
               </form>
@@ -290,6 +297,13 @@
                   <button type="submit" class="create__btn" id="create__btn">
                     Create
                   </button>
+                  <button
+                    type="submit"
+                    class="create__btn update__btn"
+                    id="update__project_btn"
+                  >
+                    Update
+                  </button>
                   <span
                     id="uploading__project__process"
                     class="uplaoding"
@@ -297,50 +311,7 @@
                 </div>
               </form>
             </div>
-            <div class="dashboard__project__card__row">
-              <div class="project__card">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
-                  alt=""
-                />
-                <div class="project__actions">
-                  <button class="edit__btn btn">
-                    <span class="material-icons"> edit </span>
-                  </button>
-                  <button class="delete__btn btn">
-                    <span class="material-icons"> delete </span>
-                  </button>
-                </div>
-              </div>
-              <div class="project__card">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
-                  alt=""
-                />
-                <div class="project__actions">
-                  <button class="edit__btn btn">
-                    <span class="material-icons"> edit </span>
-                  </button>
-                  <button class="delete__btn btn">
-                    <span class="material-icons"> delete </span>
-                  </button>
-                </div>
-              </div>
-              <div class="project__card">
-                <img
-                  src="https://cdn.pixabay.com/photo/2015/05/31/15/07/coffee-792113_960_720.jpg"
-                  alt=""
-                />
-                <div class="project__actions">
-                  <button class="edit__btn btn">
-                    <span class="material-icons"> edit </span>
-                  </button>
-                  <button class="delete__btn btn">
-                    <span class="material-icons"> delete </span>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <div class="dashboard__project__card__row" id="project__row"></div>
           </div>
         </div>
       </main>
@@ -350,6 +321,8 @@
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
     <script
       defer
       src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"

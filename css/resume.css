@@ -1,10 +1,12 @@
-/* #28B485 Primary color */
 *,
 ::after,
 ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 body {
   font-family: "Lato", sans-serif;
@@ -14,13 +16,15 @@ body {
 }
 /* *Preloader* */
 #preloader {
-  background: #28b485 url(../img/freeback.gif) no-repeat center center;
+  background: #20a87b url(../img/freeback.gif) no-repeat center center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   background-size: 15%;
   z-index: 2000;
 }
+
+/* navigation */
 .navigation {
   display: flex;
   flex-wrap: wrap;
@@ -98,161 +102,8 @@ body {
   border: 1px solid #ffffff;
   border-radius: 100px;
 }
-
-/* *BLOGS STYLES* */
-.container {
-  position: relative;
-}
-
-.container .container__primary-heading {
-  color: #28b485;
-  text-align: center;
-  margin-top: 100px;
-}
-.container__search-container {
-  position: relative;
-  background-color: #28b485;
-  width: 100%;
-}
-.search__fields {
-  position: absolute;
-  width: 80%;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  text-align: center;
-}
-.container__search-container input {
-  width: 60%;
-  height: 40px;
-  background: #ffffff;
-  border: 2px solid #28b485;
-  outline-style: none;
-  text-indent: 10px;
-}
-.container__search-btn {
-  margin-left: -5px;
-  border-style: none;
-  width: 20%;
-  height: 40px;
-  background-color: #28b485;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.blogs {
-  padding: 0px 100px;
-  margin-top: 200px;
-}
-.blogs__container {
-  display: flex;
-  margin-bottom: 20px;
-  border-radius: 5px;
+.resume {
   padding: 10px;
-  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-}
-.blog__card-description {
-  height: 200px;
-}
-.blog__card-picture img {
-  width: 300px;
-  height: 200px;
-  margin-left: 10px;
-}
-.blog__title {
-  /* width: 361px; */
-  height: 42px;
-  font-style: normal;
-  font-size: 25px;
-  line-height: 42px;
-  color: #000000;
-  margin: 10px 0px;
-}
-.PostedTime {
-  float: right;
-  font: bold;
-  color: #28b485;
-  font-size: 16px;
-}
-.blogs__actions {
-  display: flex;
-  margin-top: 40px;
-  position: relative;
-}
-.blogs__actions .blogs__author span {
-  display: block;
-  color: #00000079;
-  margin-right: 20px;
-}
-.blogs__actions .blogs__author__name span {
-  display: block;
-  margin-right: 20px;
-}
-.blogs__comments {
-  position: relative;
-  cursor: pointer;
-}
-.blogs__comments-number {
-  background-color: #28b485;
-  border-radius: 100px;
-  color: #ffffff;
-  position: absolute;
-  top: -10px;
-  left: 30px;
-  padding: 5px;
-}
-.readbtn {
-  text-decoration: none;
-  border-style: none;
-  background-color: #28b485b9;
-  padding: 5px;
-  width: 123px;
-  height: 34px;
-  border-radius: 5px;
-  color: #ffffff;
-  margin-left: 400px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.loadmore .loadmore__btn {
-  border-style: none;
-  background-color: #28b485b9;
-  padding: 5px;
-  width: 123px;
-  height: 34px;
-  border-radius: 5px;
-  color: #ffffff;
-  margin: 30px 0px;
-  cursor: pointer;
-  font-size: 16px;
-  position: relative;
-  transition: all 1s ease-out;
-}
-.loadmore .loadmore__btn :hover {
-  transform: translateY(2px);
-}
-.loadmore .loadmore__btn::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-style: none;
-  background-color: #28b485b9;
-  padding: 5px;
-  border-radius: 5px;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 16px;
-  z-index: -1;
-  transition: all 1s ease-out;
-}
-.loadmore .loadmore__btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
 }
 
 /* *FOOTER STYLES* */
@@ -268,7 +119,6 @@ body {
 }
 .footer__titles__container .footer__title {
   font-style: normal;
-  font-weight: bold;
   font-size: 48px;
   line-height: 56px;
   color: #ffffff;
@@ -332,9 +182,6 @@ body {
   position: relative;
 }
 .contact__info-heading {
-  position: absolute;
-  top: 50px;
-  left: 220px;
   font-style: normal;
   font-size: 30px;
   line-height: 42px;
@@ -344,16 +191,15 @@ body {
   text-transform: uppercase;
 }
 .underline__info {
-  position: absolute;
-  top: 90px;
-  left: 255px;
   width: 200px;
   height: 3px;
   background-color: #ffffff;
+  margin-left: 30px;
+  margin-bottom: 20px;
 }
 .contact__info-items {
   position: absolute;
-  top: 120px;
+  top: 50px;
   left: 220px;
 }
 .contact__info-item {
@@ -415,7 +261,7 @@ body {
 .socialmedia {
   position: absolute;
   top: 350px;
-  left: 890px;
+  left: 904px;
 }
 .socialmedia__heading {
   font-style: normal;
@@ -511,9 +357,63 @@ body {
   .navigation__nav-items ul li a {
     font-size: 14px;
   }
+  .aboutme .aboutme__primary--heading {
+    font-size: 30px;
+  }
 
-  .readbtn {
-    margin-left: 300px;
+  .aboutme__description {
+    width: 600px;
+    margin-top: 80px;
+  }
+  .aboutme__description .aboutme__paragraph {
+    width: 500px;
+  }
+
+  .aboutme__profile-picture {
+    margin: 20px 0px 0px 80px;
+    background-color: rgba(20, 97, 74, 0.692);
+    width: 250px;
+    height: 250px;
+  }
+  .aboutme__profile-picture img {
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    object-fit: cover;
+  }
+  .aboutme {
+    display: flex;
+    padding: 0px 50px;
+    align-items: center;
+  }
+  .skills {
+    padding: 0px 20px;
+    position: relative;
+    margin-bottom: 50px;
+  }
+  .services__container {
+    padding: 100px 0px;
+  }
+  .services__row {
+    padding: 0px 0px 0px 50px;
+  }
+  .services__card:not(:last-child) {
+    margin-right: 20px;
+  }
+  .service__heading {
+    margin-left: 50px;
+  }
+  .service__youtube {
+    margin-left: 150px;
+  }
+  .projects {
+    padding: 0px;
+  }
+  .project__card__container {
+    padding: 0px 0px 0px 50px;
+  }
+  .projects__card {
+    margin-right: 20px;
   }
   .blogs {
     padding: 0px 50px;
@@ -568,15 +468,97 @@ body {
   .navigation__nav-items {
     display: none;
   }
-  .navigation__logobox {
-    top: -10px;
-    left: 15px;
+  .header {
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
-  .container__search-container {
-    left: 30px;
+  .aboutme {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-bottom: 50px;
   }
-  .readbtn {
-    margin-left: 300px;
+  .aboutme__description {
+    margin-top: 20px;
+  }
+  .aboutme__description .aboutme__paragraph {
+    text-align: left;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .aboutme__profile-picture {
+    margin: 20px 0px 0px 0px;
+    background-color: rgba(20, 97, 74, 0.692);
+    width: 250px;
+    height: 250px;
+  }
+  .aboutme__hirebtn {
+    margin-top: 50px;
+  }
+  .skills {
+    padding: 0px;
+  }
+  .skills__card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .skill__card {
+    border: 2px solid #28b485;
+    width: 500px;
+    height: 220px;
+    border-radius: 5px;
+  }
+  .skill__card:not(:last-child) {
+    margin-bottom: 50px;
+  }
+  .skills__card-img {
+    display: none;
+  }
+  .figma-icon {
+    display: none;
+  }
+  .services {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .services__container {
+    padding: 20px 50px 50px 0px;
+    align-items: center;
+  }
+  .services__card {
+    margin-right: 0px;
+    width: 100%;
+  }
+  .services__row {
+    display: flex;
+    flex-direction: column;
+  }
+  .service__youtube {
+    margin-left: 35px;
+  }
+  .projects {
+    padding: 0px 50px 50px -40px;
+  }
+  .skills__heading {
+    margin-left: 50px;
+  }
+  .project__heading {
+    margin-left: 50px;
+  }
+  .project__card__container {
+    flex-direction: column;
+  }
+  .projects__card {
+    width: 100%;
+    height: 100%;
+    margin-right: 0px;
+  }
+  .projects__card:not(:last-child) {
+    margin-bottom: 40px;
+  }
+  .projects__card img {
+    width: 90%;
+    height: 500px;
+    border-radius: 5px;
   }
   .blogs__container {
     flex-direction: column-reverse;
@@ -624,19 +606,12 @@ body {
     height: 100vh;
   }
   .contact__info-heading {
-    top: 10px;
-    left: 50px;
+    left: 160px;
     font-size: 20px;
-  }
-  .underline__info {
-    display: none;
-  }
-  .underline__socialmedia__heading {
-    display: none;
   }
   .contact__info-items {
     position: absolute;
-    top: 80px;
+    top: 50px;
     left: 50px;
   }
   .contact__info__overlay {
@@ -660,32 +635,56 @@ body {
 }
 
 @media (max-width: 425px) {
-  .readbtn {
-    margin-left: 50px;
+  .header {
+    height: 100%;
+    padding-bottom: 50px;
   }
-  .search__fields {
-    top: 10%;
-    left: 40%;
+  .aboutme__description {
+    width: 100%;
   }
-  .contact__info-items {
-    position: absolute;
-    top: 100px;
-    left: 50px;
+  .aboutme__description .aboutme__paragraph {
+    width: 100%;
   }
-  .socialmedia {
-    position: absolute;
-    top: 700px;
-    left: 70px;
+  .aboutme {
+    padding: 0px 20px;
   }
-
-  .followme {
-    display: flex;
-    margin-top: 20px;
+  .skills {
+    padding: 0px 20px;
   }
-  .contact__info-heading {
-    top: 40px;
-    left: 50px;
-    font-size: 20px;
+  .skill__card {
+    width: 100%;
+    height: 100%;
+    margin-right: 0px;
+  }
+  .services {
+    padding: 50px 0px;
+  }
+  .services__container {
+    padding: 0px 20px;
+    align-items: center;
+  }
+  .services__row {
+    padding: 0px;
+  }
+  .service__explore {
+    padding: 0px;
+  }
+  .service__youtube {
+    width: 100%;
+    height: 300px;
+    margin-left: 0px;
+  }
+  .project__card__container {
+    padding: 0px 20px;
+  }
+  .projects__card {
+    width: 100%;
+    height: 40%;
+  }
+  .projects__card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
   }
   .blogs {
     padding: 0px 20px;
@@ -739,11 +738,6 @@ body {
 }
 
 @media (max-width: 375px) {
-  .readbtn {
-    margin-left: 30px;
-    padding: 2px;
-    font-size: 12px;
-  }
   .footer__logobox {
     top: 0px;
     left: 200px;
@@ -760,37 +754,6 @@ body {
 }
 
 @media (max-width: 320px) {
-  .container .container__primary-heading {
-    font-size: 16px;
-    margin-top: 100px;
-  }
-  .search__fields {
-    width: 100%;
-    top: 10%;
-    left: 40%;
-  }
-  .footer__titles__container .footer__title {
-    font-size: 20px;
-    line-height: 56px;
-  }
-  .footer__logobox img {
-    width: 80px;
-    height: 50px;
-  }
-  .footer__logobox--text {
-    font-size: 25px;
-    top: 5px;
-    left: 40px;
-  }
-  .blogs__actions {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  .blogs__actions .blogs__author span {
-    margin-right: 0px;
-    margin-bottom: 10px;
-  }
   .footer__logobox {
     top: 0px;
     left: 140px;

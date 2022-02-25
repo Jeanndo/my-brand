@@ -347,7 +347,10 @@ body {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
-
+.resume {
+  text-decoration: none;
+  color: #28b485;
+}
 .main__contents {
   margin-bottom: 50px;
 }
@@ -640,13 +643,17 @@ body {
   margin-left: 10px;
 }
 .blog__title {
-  width: 361px;
   height: 42px;
   font-style: normal;
   font-size: 30px;
   line-height: 42px;
   color: #000000;
   margin: 10px 0px;
+}
+.PostedTime {
+  color: #28b485;
+  font-size: 16px;
+  float: right;
 }
 .blogs__actions {
   display: flex;
@@ -1381,5 +1388,21 @@ body {
   .quicklinks ul li a {
     margin-right: 5px;
     font-size: 10px;
+  }
+}
+
+/* *LOADING SKELETON* */
+
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
   }
 }

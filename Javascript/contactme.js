@@ -1,7 +1,4 @@
 // @ts-nocheck
-
-const db = firebase.firestore()
-
 // TOAST
 const Toast = {
   init() {
