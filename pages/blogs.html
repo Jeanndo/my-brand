@@ -82,147 +82,16 @@
               name="search"
               required
             />
-            <button type="submit" class="container__search-btn">Search</button>
+            <button type="submit" class="container__search-btn" id="searchBtn">
+              Search
+            </button>
           </div>
         </form>
       </div>
-      <section class="blogs" id="blog">
-        <div class="blogs__container">
-          <div class="blog__card-description">
-            <h4 class="blog__title">What is Lorem ?</h4>
-            <p class="blogs__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-              debitis incidunt laboriosam assumenda, provident laudantium
-              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
-              in porro illo aspernatur eaque nesciunt
-            </p>
-            <div class="blogs__actions">
-              <div class="blogs__author"><span>Author:Jeanndo</span></div>
-              <div class="blogs__comments">
-                <figure>
-                  <img src="../img/greencomment.png" alt="comment" />
-                  <figcaption>
-                    <span class="blogs__comments-number">50</span>
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="loadmore">
-                <a href="../pages/singleBlog.html" class="readbtn"
-                  >Read more...</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="blog__card-picture">
-            <img
-              src="https://cdn.pixabay.com/photo/2017/03/04/12/15/programming-2115930_960_720.jpg"
-              alt="blog"
-            />
-          </div>
-        </div>
-        <div class="blogs__container">
-          <div class="blog__card-description">
-            <h4 class="blog__title">What is Lorem ?</h4>
-            <p class="blogs__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-              debitis incidunt laboriosam assumenda, provident laudantium
-              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
-              in porro illo aspernatur eaque nesciunt
-            </p>
-            <div class="blogs__actions">
-              <div class="blogs__author"><span>Author:Jeanndo</span></div>
-              <div class="blogs__comments">
-                <figure>
-                  <img src="../img/greencomment.png" alt="comment" />
-                  <figcaption>
-                    <span class="blogs__comments-number">5k</span>
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="loadmore">
-                <a href="../pages/singleBlog.html" class="readbtn"
-                  >Read more...</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="blog__card-picture">
-            <img
-              src="https://cdn.pixabay.com/photo/2019/11/05/17/56/employee-4604126_960_720.jpg"
-              alt="blog"
-            />
-          </div>
-        </div>
-        <div class="blogs__container">
-          <div class="blog__card-description">
-            <h4 class="blog__title">What is Lorem ?</h4>
-            <p class="blogs__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-              debitis incidunt laboriosam assumenda, provident laudantium
-              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
-              in porro illo aspernatur eaque nesciunt
-            </p>
-            <div class="blogs__actions">
-              <div class="blogs__author"><span>Author:Jeanndo</span></div>
-              <div class="blogs__comments">
-                <figure>
-                  <img src="../img/greencomment.png" alt="comment" />
-                  <figcaption>
-                    <span class="blogs__comments-number">200</span>
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="loadmore">
-                <a href="../pages/singleBlog.html" class="readbtn"
-                  >Read more...</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="blog__card-picture">
-            <img
-              src="https://cdn.pixabay.com/photo/2017/07/31/14/45/code-2558220_960_720.jpg"
-              alt="blog"
-            />
-          </div>
-        </div>
-        <div class="blogs__container">
-          <div class="blog__card-description">
-            <h4 class="blog__title">What is Lorem ?</h4>
-            <p class="blogs__description">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-              debitis incidunt laboriosam assumenda, provident laudantium
-              placeat, quidem repudiandae rem voluptatibus veritatis ratione et
-              in porro illo aspernatur eaque nesciunt
-            </p>
-            <div class="blogs__actions">
-              <div class="blogs__author"><span>Author:Jeanndo</span></div>
-              <div class="blogs__comments">
-                <figure>
-                  <img src="../img/greencomment.png" alt="comment" />
-                  <figcaption>
-                    <span class="blogs__comments-number">1k</span>
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="loadmore">
-                <a href="../pages/singleBlog.html" class="readbtn"
-                  >Read more...</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="blog__card-picture">
-            <img
-              src="https://cdn.pixabay.com/photo/2014/09/28/11/25/imac-464739_960_720.jpg"
-              alt="blog"
-            />
-          </div>
-        </div>
-        <div class="loadmore">
-          <button class="loadmore__btn">Loadmore...</button>
-        </div>
+      <section class="blogs">
+        <div id="blog"></div>
       </section>
+
       <footer class="footer" id="contact">
         <div class="footer__titles__container">
           <div class="footer__title"><span>Let&rsquo;s Talk</span></div>
@@ -343,16 +212,39 @@
         </div>
       </footer>
     </main>
-    <script>
+    <script defer>
       var loader = document.getElementById("preloader")
       window.addEventListener("load", () => {
         loader.style.display = "none"
       })
     </script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
-    <script src="./../Javascript/contactme.js"></script>
+
+    <script
+      type="text/javascript"
+      id="hs-script-loader"
+      async
+      defer
+      src="//js-na1.hs-scripts.com/20250591.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"
+    ></script>
+    <script defer src="./../Javascript/congif.js"></script>
+    <script defer src="./../Javascript/displayBlogs.js"></script>
+    <script defer src="./../Javascript/contactme.js"></script>
   </body>
 </html>

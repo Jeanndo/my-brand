@@ -139,6 +139,10 @@ body {
   color: #28b485;
   margin: 30px 0px;
 }
+.PostedTime {
+  margin: 200px;
+  font-size: 16px;
+}
 .container__blogs-description-paragraph {
   text-align: left;
   margin-bottom: 20px;
@@ -966,4 +970,23 @@ body {
   color: #28b485;
   background: none;
   float: right;
+}
+
+.recommended__blogs {
+  padding: 0px 100px;
+  margin-bottom: 100px;
+}
+.recomended__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.recommended__card:not(:last-child) {
+  margin-right: 10px;
+}
+.recommended__card {
+  margin-bottom: 20px;
+}
+.recomended__container img {
+  width: 280px;
+  height: 200px;
 }

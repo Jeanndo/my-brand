@@ -1,6 +1,4 @@
 // @ts-nocheck
-const db = firebase.firestore()
-
 // ToolBar
 
 const toolbar = document.getElementById("toolbar")
@@ -159,6 +157,9 @@ const CreateBlog = (event) => {
             Title: Title,
             ImageUrl: downloadedImage,
             Blog: BlogText,
+            Like: [],
+            DisLike: [],
+            CreatedAt: Date.now(),
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           })
           .then((blogs) => {
@@ -182,7 +183,7 @@ const createProject = (event) => {
   event.preventDefault()
 
   const Image_url = document.getElementById("image_url").files[0]
-  const imageName = image_url.name
+  const imageName = Image_url.name
   const projectRef = firebase.storage().ref(`Projects/${imageName}`)
 
   const uploadTask = projectRef.put(Image_url)
@@ -217,6 +218,7 @@ const createProject = (event) => {
             projectName: project__name,
             projectPrice: project__price,
             projectLink: project__link,
+            CreatedAt: Date.now(),
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
           })
           .then((project) => {

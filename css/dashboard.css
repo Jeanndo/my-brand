@@ -208,7 +208,9 @@ body {
   font-family: "Tangerine", serif;
   font-size: 30px;
 }
-
+.update__btn {
+  display: none;
+}
 /* *BLOG LIST* */
 /* *MY BLOGS* */
 .blogs {
@@ -222,6 +224,7 @@ body {
   border-radius: 5px;
   padding: 10px;
   background-color: #ffffff;
+  position: relative;
 }
 .blog__card-description {
   height: 200px;
@@ -233,13 +236,18 @@ body {
   margin-left: 10px;
 }
 .blog__title {
-  width: 361px;
   height: 42px;
   font-style: normal;
   font-size: 30px;
   line-height: 42px;
   color: #000000;
   margin: 10px 0px;
+}
+.PostedTime {
+  float: right;
+  font: bold;
+  color: #28b485;
+  font-size: 16px;
 }
 .blogs__actions {
   display: flex;
@@ -295,22 +303,32 @@ body {
 }
 
 .dashboard__project__card__row {
-  background-color: #ffffff;
-  padding: 10px 20px;
+  background-color: #464852;
+  padding: 10px 30px;
   border-radius: 5px;
   display: flex;
+  flex-wrap: wrap;
 }
 .project__card {
-  margin-right: 10px;
+  width: 340px;
+  height: 300px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+}
+.project__card:not(:last-child) {
+  margin-right: 25px;
 }
 .project__card img {
-  width: 350px;
-  height: 250px;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
 }
 .project__actions {
-  transform: translateY(-55px);
-  background-color: #3db16b;
-  padding: 10px;
+  transform: translateY(-40px);
+  background: #28b485;
+  padding: 5px 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .secondMenu {
   display: none;
