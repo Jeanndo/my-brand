@@ -19,17 +19,37 @@ login_Btn.addEventListener("click", (event) => {
       // Signed in
       var user = userCredential.user
       console.log(user)
+      const { email, xa, uid } = user
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          email: email,
+          token: xa,
+          userId: uid,
+        })
+      )
+      if (
+        JSON.parse(localStorage?.getItem("userInfo"))?.token &&
+        JSON.parse(localStorage?.getItem("userInfo"))?.email ===
+          "ukjeando@gmail.com"
+      ) {
+        location.href = "./../pages/Dashboard.html"
+      } else {
+        location.href = "./../index.html"
+      }
+      console.log(JSON.parse(localStorage.getItem("userInfo")))
     })
     .catch((error) => {
       var errorCode = error.code
       var errorMessage = error.message
       console.log(errorMessage)
+      document.getElementById("error").innerHTML = errorMessage
+      document.getElementById("error").style.color = "red"
     })
   // CLEAR FORM
 
   email.value = ""
   password.value = ""
-  location.href = "./../pages/Dashboard.html"
 })
 
 const googleAuth = () => {

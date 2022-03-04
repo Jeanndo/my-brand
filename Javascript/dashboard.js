@@ -1,4 +1,8 @@
 // @ts-nocheck
+if (JSON.parse(localStorage.getItem("userInfo")) === null) {
+  location.href = "./../pages/login.html"
+}
+console.log(localStorage.getItem("userInfo"))
 // ToolBar
 
 const toolbar = document.getElementById("toolbar")
@@ -38,9 +42,11 @@ const blogForm = document.getElementById("blog__form")
 const users = document.getElementById("user__form")
 const dashboardItems = document.getElementById("dashboard__items")
 const dashboard = document.getElementById("dashboard")
+const homeTab = document.getElementById("Home")
 
 // SIDE BAR TAB BUTTONS
 
+const homeButton = document.getElementById("home__button")
 const user__button = document.getElementById("user__button")
 const blog__button = document.getElementById("blog__button")
 const project__button = document.getElementById("project__button")
@@ -53,6 +59,16 @@ projectForm.style.display = "none"
 blogForm.style.display = "none"
 
 // SIDE BAR FUNCTIONALITY HANDLING
+
+homeButton.addEventListener("click", (event) => {
+  event.preventDefault()
+  location.href = "./../index.html"
+})
+
+homeTab.addEventListener("click", (event) => {
+  event.preventDefault()
+  location.href = "./../index.html"
+})
 
 dashboard.addEventListener("click", (event) => {
   event.preventDefault()

@@ -1406,3 +1406,80 @@ body {
     background-color: hsl(200, 20%, 95%);
   }
 }
+
+/* *HAMBURGER* */
+.hamburgerMenu {
+  display: none;
+  position: relative;
+  z-index: 1000;
+}
+.hambergerNav {
+  width: 100%;
+  height: 100vh;
+  padding: 20px 0px;
+  text-align: center;
+  background-color: #20a87b;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.hambergerNav .hambergerLogo {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.hambergerNav .hambergerLogo a {
+  text-decoration: none;
+  color: #ffffff;
+  margin-left: 30px;
+  font-size: 20px;
+}
+.hambergerNav .hambergerLogo img {
+  transform: rotate(280deg);
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  position: absolute;
+  top: -20px;
+  left: 660px;
+}
+.close__btn {
+  position: absolute;
+  left: 1350px;
+  top: 0px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.hamburgerSocialIcons ul {
+  list-style: none;
+}
+.hamburger__list__container .hamburger__listItems {
+  text-align: left;
+  list-style: none;
+  position: absolute;
+  left: 690px;
+}
+.hamburger__list__container .hamburger__listItems li a {
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 17px;
+}
+.hamburger__list__container .hamburger__listItems li {
+  margin-top: 30px;
+}
+.hamburger__login__btn,
+.hamburger__signup__btn {
+  width: 150px;
+  padding: 5px;
+  outline: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #28b485;
+  border-style: none;
+  margin-left: -40px;
+  border-radius: 3px;
+}
+.hamburger__signup__btn {
+}

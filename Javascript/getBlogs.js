@@ -3,6 +3,7 @@ db.collection("blogs")
   .orderBy("timestamp", "desc")
   .onSnapshot((blogs) => {
     const data = blogs.docs.map((doc) => ({ data: doc.data(), id: doc.id }))
+    console.log("blog", data)
     document.getElementById("blog").innerHTML = data
       ?.map(
         (blog) => `<div class="blogs__container" key=${blog.id}>
@@ -19,9 +20,8 @@ db.collection("blogs")
                   </p>
                   <div class="blogs__actions">
                     <div class="blogs__author"><span>Author</span></div>
-                    <div class="blogs__author__name"><span>${
-                      blog.data.Author
-                    }</span></div>
+                    <div class="blogs__author__name"><span>
+                    ${blog.data.Author}</span></div>
                     <button class="edit__btn btn" id="edit__btn"onclick="getBlogToUpdate('${
                       blog.id
                     }')">

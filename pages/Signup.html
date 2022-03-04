@@ -37,10 +37,10 @@
             <a href="./../index.html">Home</a>
           </li>
           <li>
-            <a href="./../index.html">SKills</a>
+            <a href="./../index.html#skills">SKills</a>
           </li>
           <li>
-            <a href="./../index.html">Services</a>
+            <a href="./../index.html#services">Services</a>
           </li>
           <li>
             <a href="./../pages/projects.html"> Projects</a>
@@ -49,10 +49,10 @@
             <a href="./../pages/blogs.html">Blog</a>
           </li>
           <li>
-            <a href="./../index.html">About</a>
+            <a href="./../index.html#about">About</a>
           </li>
           <li>
-            <a href="./../index.html">Contact</a>
+            <a href="./../index.html#contact">Contact</a>
           </li>
           <li>
             <a href="./../pages/Login.html">
@@ -77,10 +77,10 @@
         </ul>
       </div>
     </nav>
-    <div class="modal" id="hide">
+    <div class="modal">
       <div class="modal__header">
         <div class="authentication__form">
-          <form>
+          <form id="signup__btn">
             <div>
               <input
                 type="email"
@@ -99,15 +99,16 @@
                 required
               />
             </div>
+            <div><span id="error"></span></div>
             <div>
-              <button type="submit" class="send__btn" id="signup__btn">
+              <button type="submit" class="send__btn" id="register__btn">
                 Signup
               </button>
             </div>
           </form>
           <div class="Auth__actions">
             <div class="noaccount">
-              <span>Have Account?</span>
+              <span>Have an Account?</span>
               <a href="./../pages/Login.html"><strong> Login</strong></a>
             </div>
           </div>

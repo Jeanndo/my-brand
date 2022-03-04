@@ -1,26 +1,32 @@
 // @ts-nocheck
-const signup_Btn = document.getElementById("signup__btn")
+const signup_Form = document.getElementById("signup__btn")
 
-signup_Btn.addEventListener("click", (event) => {
+signup_Form.addEventListener("submit", (event) => {
   // GET DOM ELEMENTS BY IDs
 
   event.preventDefault()
-  let email = document.getElementById("email")
-  let password = document.getElementById("password")
+  let email = signup_Form.email.value
+  let password = signup_Form.password.value
 
   // CREATE USER
 
   firebase
     .auth()
-    .createUserWithEmailAndPassword(email.value, password.value)
+    .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in
       var user = userCredential.user
-      console.log(user)
+      console.log("signedup", user)
       const { email, xa, uid } = user
+
+      // SAVING USER INFO IN LOCAL STORAGE
       localStorage.setItem(
         "userInfo",
-        JSON.stringify({ email: email, token: xa, userId: uid })
+        JSON.stringify({
+          email: email,
+          token: xa,
+          userId: uid,
+        })
       )
       if (
         JSON.parse(localStorage?.getItem("userInfo"))?.token &&
@@ -36,12 +42,16 @@ signup_Btn.addEventListener("click", (event) => {
       var errorCode = error.code
       var errorMessage = error.message
       console.log(errorMessage)
+      document.getElementById("error").innerHTML = errorMessage
+      document.getElementById("error").style.color = "red"
     })
 
   // CLEAR FORM
-
-  email.value = ""
-  password.value = ""
+  firstName = ""
+  lastName = ""
+  phone = ""
+  email = ""
+  password = ""
 })
 
 // GOOGLE SIGINUP

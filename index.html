@@ -24,6 +24,39 @@
   </head>
   <body>
     <div id="preloader"></div>
+    <div class="hamburgerMenu">
+      <nav class="hambergerNav">
+        <div class="hambergerLogo">
+          <a href="./index.html">
+            <img src="./img/Logo.png" />
+            <span class="hambuger__logo__text">odemoon.</span>
+          </a>
+        </div>
+        <div class="hamburger__list__container">
+          <ul class="hamburger__listItems">
+            <li><a href="#">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#Services">Services</a></li>
+            <li><a href="./pages/projects.html">Projects</a></li>
+            <li><a href="./pages/blogs.html">Blogs</a></li>
+            <li><a href="./index.html#about">Home</a></li>
+            <li>
+              <a href="./pages/Login.html"
+                ><button class="hamburger__login__btn">Login</button></a
+              >
+            </li>
+            <li>
+              <a href="./pages/Signup.html"
+                ><button class="hamburger__signup__btn">Signup</button></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="hamburger__menuIcon">
+          <span class="material-icons close__btn"> close </span>
+        </div>
+      </nav>
+    </div>
     <nav class="navigation" id="navigation">
       <a href="./index.html">
         <div class="navigation__logobox">
@@ -74,6 +107,8 @@
               </button>
             </a>
           </li>
+          <!-- <span class="material-icons"> menu </span>
+          <li><a href="#"></a></li> -->
         </ul>
       </div>
     </nav>
@@ -126,6 +161,18 @@
             </div>
             <div class="skills__title">
               <h3>JAVASCRIPT</h3>
+              <div><span>10 project</span></div>
+            </div>
+          </div>
+          <div class="skill__card card3">
+            <div class="skills__card-img">
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png"
+                alt=""
+              />
+            </div>
+            <div class="skills__title">
+              <h3>FIREBASE</h3>
               <div><span>10 project</span></div>
             </div>
           </div>
@@ -233,71 +280,7 @@
       </section>
       <section class="projects" id="projects">
         <h2 class="heading__primary project__heading">Projects</h2>
-        <div class="project__card__container">
-          <div class="projects__card">
-            <figure>
-              <img
-                src="https://images.unsplash.com/photo-1477647966959-5a95d41d625a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              />
-              <figcaption>
-                <div class="project__overlay">
-                  <div class="projects__description">
-                    <div class="projects__title"><span>Project Name</span></div>
-                    <div class="projects__link">
-                      <a href="#" class="projects__link-btn">
-                        <div class="link__container">
-                          <img src="./img/Projectbtn.png" />
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="projects__card">
-            <figure>
-              <img
-                src="https://images.unsplash.com/photo-1457295767206-0cb0658056cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGhhbmQlMjBkcmF3aW5nc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-              />
-              <figcaption>
-                <div class="project__overlay">
-                  <div class="projects__description">
-                    <div class="projects__title"><span>Project Name</span></div>
-                    <div class="projects__link">
-                      <a href="#" class="projects__link-btn">
-                        <div class="link__container">
-                          <img src="./img/Projectbtn.png" />
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="projects__card">
-            <figure>
-              <img
-                src="https://images.unsplash.com/photo-1569309338532-a0c01062acc8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGhhbmQlMjBkcmF3aW5nc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-              />
-              <figcaption>
-                <div class="project__overlay">
-                  <div class="projects__description">
-                    <div class="projects__title"><span>Project Name</span></div>
-                    <div class="projects__link">
-                      <a href="#" class="projects__link-btn">
-                        <div class="link__container">
-                          <img src="./img/Projectbtn.png" />
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
+        <div class="project__card__container" id="projects__container"></div>
       </section>
       <section class="blogs" id="blog">
         <h2 class="heading__primary">MY BLOGS</h2>
@@ -466,6 +449,6 @@
     ></script>
     <script defer src="./Javascript/congif.js"></script>
     <script defer src="./Javascript/contactme.js"></script>
-    <script defer src="./Javascript/LandingBlogs.js"></script>
+    <script defer src="./Javascript/Landing.js"></script>
   </body>
 </html>

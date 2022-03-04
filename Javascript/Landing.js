@@ -1,4 +1,7 @@
 // @ts-nocheck
+
+// DISPLAY BLOGS
+
 db.collection("blogs")
   .orderBy("timestamp", "desc")
   .onSnapshot((blogs) => {
@@ -41,6 +44,43 @@ db.collection("blogs")
           </div>
         </div>
         `
+      )
+      .join("")
+  })
+
+// DISPLAY PROJECTS
+
+db.collection("Projects")
+  .orderBy("timestamp", "desc")
+  .onSnapshot((project) => {
+    const data = project.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+    console.log(data)
+    document.getElementById("projects__container").innerHTML = data
+      .slice(0, 3)
+      .map(
+        (project) =>
+          ` <div class="projects__card" key=${project.id}>
+            <figure>
+              <img
+                src=${project.data.imageUrl}
+                alt=""
+              />
+              <figcaption>
+                <div class="project__overlay">
+                  <div class="projects__description">
+                    <div class="projects__title"><span>${project.data.projectName}</span></div>
+                    <div class="projects__link">
+                      <a href=${project.data.projectLink} class="projects__link-btn">
+                        <div class="link__container">
+                          <img src="./img/Projectbtn.png" />
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>`
       )
       .join("")
   })

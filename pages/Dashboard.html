@@ -42,7 +42,6 @@
         autosave_restore_when_empty: false,
         autosave_retention: "2m",
         image_advtab: true,
-        /*content_css: '//www.tiny.cloud/css/codepen.min.css',*/
         link_list: [
           { title: "My page 1", value: "https://www.codexworld.com" },
           { title: "My page 2", value: "https://www.xwebtools.com" },
@@ -156,6 +155,9 @@
         <div class="dashboard__sidebar" id="sidebar">
           <div class="side__Icons">
             <div>
+              <div id="home__button">
+                <span class="material-icons"> home </span>
+              </div>
               <div id="dashboard__button">
                 <span class="material-icons"> dashboard </span>
               </div>
@@ -182,6 +184,13 @@
               </div>
             </div>
             <ul id="list">
+              <li id="Home">
+                <a href="#">
+                  <div class="items__button">
+                    <span class="label">Home</span>
+                  </div>
+                </a>
+              </li>
               <li id="dashboard">
                 <a href="#">
                   <div class="items__button">
