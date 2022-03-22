@@ -1,55 +1,52 @@
 // @ts-nocheck
-// TOAST
-const Toast = {
-  init() {
-    this.hideTimemout = null
 
-    this.el = document.createElement("div")
-    this.el.className = "toast"
-    document.body.appendChild(this.el)
-  },
-  show(message, state) {
-    clearTimeout(this.hideTimemout)
-    this.el.textContent = message
-    this.el.className = "toast toast__visible"
-    if (state) {
-      this.el.classList.add(`toast__${state}`)
+// CONTACT ME
+
+document
+  .getElementById("contact__form")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault()
+
+    const body = {
+      fullName: document.getElementById("contact__form").fullname.value,
+      email: document.getElementById("contact__form").email.value,
+      subject: document.getElementById("contact__form").subject.value,
+      message: document.getElementById("contact__form").message.value,
     }
-    this.hideTimemout = setTimeout(() => {
-      this.el.classList.remove("toast__visible")
-    }, 300)
-  },
-}
 
-document.addEventListener("DOMContentLoaded", () => Toast.init())
+    try {
+      const response = await fetch(
+        "https://my-brand-codemoon.herokuapp.com/api/v1/messages",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${
+              JSON.parse(localStorage.getItem("token")).token
+            }`,
+          },
+          body: JSON.stringify(body),
+        }
+      )
 
-// CREATE CONTACT INFO
+      const messages = await response.json()
+      console.log(messages)
 
-const createContact = (event) => {
-  event.preventDefault()
-
-  const fullname = document.getElementById("fullname")
-  const email = document.getElementById("email")
-  const subject = document.getElementById("subject")
-  const message = document.getElementById("message")
-
-  db.collection("contactMessage")
-    .add({
-      Name: fullname.value,
-      Email: email.value,
-      Subject: subject.value,
-      Message: message.value,
-    })
-    .then((message) => {
-      console.log(message)
-    })
-    .catch((error) => {
+      const { message, status } = messages
+      Toastify({
+        text: "Received with thanks",
+        className: "info",
+        position: "center",
+        style: {
+          background: "linear-gradient(to right, #FFA500, #fb923c)",
+        },
+      }).showToast()
+    } catch (error) {
       console.log(error)
-    })
-  fullname.value = ""
-  email.value = ""
-  subject.value = ""
-  message.value = ""
-  Toast.show("Created", "success")
-}
-document.getElementById("contact__btn").addEventListener("click", createContact)
+    }
+    document.getElementById("contact__form").fullname.value = ""
+    document.getElementById("contact__form").email.value = ""
+    document.getElementById("contact__form").subject.value = ""
+    document.getElementById("contact__form").message.value = ""
+  })

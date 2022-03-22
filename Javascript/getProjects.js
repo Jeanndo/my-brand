@@ -1,25 +1,36 @@
 // @ts-nocheck
-db.collection("Projects")
-  .orderBy("timestamp", "desc")
-  .onSnapshot((projetcs) => {
-    const data = projetcs.docs.map((doc) => ({
-      data: doc.data(),
-      id: doc.id,
-    }))
-    console.log("Projects", data)
-    document.getElementById("project__row").innerHTML = data
-      .map(
+const getFetchProjects = async () => {
+  try {
+    const response = await fetch(
+      "https://my-brand-codemoon.herokuapp.com/api/v1/projects",
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("token")).token
+          }`,
+        },
+      }
+    )
+
+    const projects = await response.json()
+
+    console.log(projects.data.data)
+    document.getElementById("project__row").innerHTML = projects?.data?.data
+      ?.map(
         (project) =>
-          `<div class="project__card" key=${project.id}>
+          `<div class="project__card" key=${project._id}>
                 <img
-                  src=${project.data.imageUrl}
-                  alt=${project.data.projectName}
+                  src="https://cdn.pixabay.com/photo/2018/09/25/17/14/airplane-3702676__340.jpg"
+                  alt=${project.projectName}
                 />
                 <div class="project__actions">
-                  <button class="edit__btn btn" onclick="getProjectToUpdate('${project.id}')">
+                  <button class="edit__btn btn" onclick="getProjectToUpdate('${project._id}')">
                     <span class="material-icons"> edit </span>
                   </button>
-                  <button class="delete__btn btn" onclick="deleteProject('${project.id}')">
+                  <button class="delete__btn btn" onclick="deleteProject('${project._id}')">
                     <span class="material-icons"> delete </span>
                   </button>
                 </div>
@@ -27,103 +38,102 @@ db.collection("Projects")
               `
       )
       .join("")
-  })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+getFetchProjects()
 
 // GET ID OF THE PROJECT TO BE UPDATED
 
-function getProjectToUpdate(id) {
+const getProjectToUpdate = async (id) => {
   localStorage.setItem("projectToUpdate", JSON.stringify({ id }))
-  db.collection("Projects")
-    .doc(id)
-    .get()
-    .then((doc) => {
-      document.getElementById("projectName").value = doc.data().projectName
-      document.getElementById("project__price").value = doc.data().projectPrice
-      document.getElementById("project__link").value = doc.data().projectLink
-      document.getElementById("update__project_btn").style.display =
-        "inline-block"
-    })
+
+  try {
+    const response = await fetch(
+      `https://my-brand-codemoon.herokuapp.com/api/v1/projects/${id}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application",
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("token")).token
+          }`,
+        },
+      }
+    )
+    const project = await response.json()
+
+    document.getElementById("projectName").value = project.data.data.name
+    document.getElementById("project__price").value = project.data.data.price
+    document.getElementById("project__link").value = project.data.data.link
+    document.getElementById("update__project_btn").style.display =
+      "inline-block"
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-// UPDATE PROJECT
+// UPDATE PROJECT FUNCTION
+
+const updateProject = async (event) => {
+  event.preventDefault()
+  const id = JSON.parse(localStorage.getItem("projectToUpdate")).id
+
+  const body = {
+    name: document.getElementById("projectName").value,
+    projectImage: document.getElementById("image_url").files[0].name,
+    price: document.getElementById("project__price").value,
+    link: document.getElementById("project__link").value,
+  }
+
+  try {
+    const response = await fetch(
+      `https://my-brand-codemoon.herokuapp.com/api/v1/projects/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application",
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("token")).token
+          }`,
+        },
+        body: JSON.stringify(body),
+      }
+    )
+    console.log(id)
+    const project = await response.json()
+    console.log("data", project.data.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 document
   .getElementById("update__project_btn")
   .addEventListener("click", updateProject)
 
-// UPDATE PROJECT FUNCTION
-
-function updateProject(event) {
-  event.preventDefault()
-  const id = JSON.parse(localStorage.getItem("projectToUpdate")).id
-
-  const Image_url = document.getElementById("image_url").files[0]
-  const imageName = Image_url.name
-  const projectRef = firebase.storage().ref(`Projects/${imageName}`)
-
-  const uploadTask = projectRef.put(Image_url)
-  const project__name = document.getElementById("projectName").value
-  const project__price = document.getElementById("project__price").value
-  const project__link = document.getElementById("project__link").value
-
-  uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      document.getElementById("uploading__project__process").innerHTML =
-        "Upload is " + progress + "% done"
-
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.paused:
-          console.log("uplaoding paused")
-          break
-        case firebase.storage.TaskState.running:
-          console.log("uploading is running")
-          break
-      }
-    },
-    (error) => {
-      console.log(error)
-    },
-    () => {
-      uploadTask.snapshot.ref.getDownloadURL().then((downloadedImage) => {
-        db.collection("Projects")
-          .doc(id)
-          .set(
-            {
-              imageUrl: downloadedImage,
-              projectName: project__name,
-              projectPrice: project__price,
-              projectLink: project__link,
-              CreatedAt: Date.now(),
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            },
-            {
-              merge: true,
-            }
-          )
-          .then((project) => {
-            console.log(project)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      })
-    }
-  )
-}
-
 // DELETE PROJECT FUNTION
 
-function deleteProject(id) {
-  db.collection("Projects")
-    .doc(id)
-    .delete()
-    .then(() => {
-      console.log("Project successfully removed!!")
-    })
-    .catch((error) => {
-      console.error("Error removing document: ", error)
-    })
-  console.log(id)
+const deleteProject = async (id) => {
+  try {
+    await fetch(
+      `https://my-brand-codemoon.herokuapp.com/api/v1/projects/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application",
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("token")).token
+          }`,
+        },
+      }
+    )
+  } catch (error) {
+    console.log(error)
+  }
 }
