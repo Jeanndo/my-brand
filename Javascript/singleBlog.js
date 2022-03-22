@@ -1,7 +1,5 @@
 // @ts-nocheck
 
-const blogId = JSON.parse(localStorage.getItem("blogId")).id
-
 // CREATE CONTACT MESSAGE
 
 function createContact(event) {
@@ -31,41 +29,54 @@ function createContact(event) {
   message.value = ""
 }
 
-// GET A SINGLE BLOG
+// RECOMMENDED BLOGS
 
-db.collection("blogs")
-  .doc(blogId)
-  .get()
-  .then((doc) => {
-    const data = {
-      id: doc.id,
-      data: doc.data(),
-    }
+const fetchRecommendedBlogs = async () => {
+  try {
+    const response = await fetch(
+      `https://my-brand-codemoon.herokuapp.com/api/v1/blogs`
+    )
+    const blogs = await response.json()
+    console.log(blogs.data.data)
+    document.getElementById("recommended").innerHTML = blogs?.data?.data
+      ?.map(
+        (blog) =>
+          `<div class="recommended__card">
+          <a href="">
+            <img
+              src="https://cdn.pixabay.com/photo/2017/07/20/04/38/fantasy-2521221_960_720.jpg"
+              alt=""
+            />
+          </a>
+        </div>`
+      )
+      .join("")
+  } catch (error) {
+    console.log(error)
+  }
+}
+fetchRecommendedBlogs()
 
-    db.collection("comments")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((comment) => {
-        const Blogcomments = comment.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }))
+const fetchSingleBlog = async () => {
+  let params = new URLSearchParams(window.location.search)
+  let blogId = params.get("id")
 
-        let numOfComments = 0
+  console.log(blogId)
+  try {
+    const response = await fetch(
+      `https://my-brand-codemoon.herokuapp.com/api/v1/blogs/${blogId}`
+    )
 
-        for (let i = 0; i < Blogcomments.length; i++) {
-          if (data.id === Blogcomments[i].data.blogId) {
-            numOfComments += 1
-          }
-          continue
-        }
-        document.getElementById(
-          "main__blog"
-        ).innerHTML = `<h1 class="container__primary-heading">Learn with me!</h1>
+    const blog = await response.json()
+    console.log(blog.data.data)
+    document.getElementById(
+      "main__blog"
+    ).innerHTML = ` <h1 class="container__primary-heading">Learn with me!</h1>
       <div class="container__full-blog">
         <div class="container__blog__image">
           <div>
             <img
-              src=${data.data.ImageUrl}
+              src="https://cdn.pixabay.com/photo/2018/10/15/17/50/dog-3749561_960_720.jpg"
             />
           </div>
           <div class="related__post">
@@ -73,6 +84,7 @@ db.collection("blogs")
               <img
                 class="related__post-img"
                 src="https://cdn.pixabay.com/photo/2017/07/20/04/38/fantasy-2521221_960_720.jpg"
+                alt=""
               />
               <strong> Recommended is Synergy west power?</strong>
             </a>
@@ -81,93 +93,77 @@ db.collection("blogs")
       </div>
       <div class="container__blogs-description">
         <h1 class="container__blogs-description-heading">
-         ${data.data.Title}
-         <span class="PostedTime">Posted:${moment(
-           data.data.CreatedAt
-         ).fromNow()}</span>
+         ${blog?.data?.data?.title}
         </h1>
         <p class="container__blogs-description-paragraph">
-           ${data.data.Blog}
+        ${blog?.data?.data?.description}
         </p>
         <div class="blogs__actions">
-          <div class="blogs__author"><span>Author:Jeanndo</span></div>
+          <div class="blogs__author"><span>Author:${
+            blog?.data?.data?.author
+          }</span></div>
           <div class="blogs__comments">
             <h4 class="blogs__comment-label">Comments</h4>
             <figure id="commentsbtn">
               <img src="../img/greencomment.png" alt="comment" />
               <figcaption>
-                <span class="blogs__comments-number">${numOfComments}</span>
+                <span class="blogs__comments-number">${
+                  blog.data.data.comments.length
+                }</span>
               </figcaption>
             </figure>
             <div class="blogs__comment-like">
-              <div id="likeNumber">
-                <span class="material-icons like"> thumb_up_off_alt </span>
-                <span class="like__number">1k</span>
+              <div id="like__btn">
+                <span class="material-icons like" > thumb_up_off_alt </span>
+                <span class="like__number">${
+                  blog?.data?.data?.likes?.length
+                }</span>
               </div>
-              <div id="dislikeNumber">
-                <span class="material-icons dislike"> thumb_down_off_alt </span>
-                <span class="dislike__number">50</span>
+              <div id="dislike__btn">
+                <span class="material-icons dislike" > thumb_down_off_alt </span>
+                <span class="dislike__number">${
+                  blog?.data?.data?.disLikes.length
+                }</span>
               </div>
             </div>
-            <span class="material-icons share__btn"> share </span>
+          
           </div>
         </div>
-       ${
-         blogId === data.id
-           ? `<div class="comments__list" id="comments__list">
-             ${Blogcomments.map(
-               (comment) =>
-                 `
-                 <div class="comment__container" key=${comment.id}>
-                <div class="user__info">
-                ${
-                  comment.data.blogId === data.id
-                    ? ` <div class="user__image">
-                 <img
-                   src="https://media-exp1.licdn.com/dms/image/C4D03AQHfiJUDxoQhgw/profile-displayphoto-shrink_800_800/0/1603820615070?e=1650499200&v=beta&t=8oRTmlTiTdQAxrbFpvqsMjjKRIu6bm2kfM33HnVL0jM"
-                   alt=""
-                 />
-               </div>`
-                    : ""
-                }
-                
-               ${
-                 comment.data.blogId === data.id
-                   ? `<div class="user__name">${comment.data.author}</div>`
-                   : ""
-               }
-               ${
-                 comment.data.blogId === data.id
-                   ? `<div class="posted__at">
-                     <strong>
-                       Posted:${moment(comment.data.CreatedAt).fromNow()}
-                     </strong>
-                   </div>`
-                   : ""
-               }
-               
-             </div>
-             <div class="comments__list__items">
-             ${
-               comment.data.blogId === data.id
-                 ? `<p>${comment.data.comments}</p>`
-                 : ""
-             }
-             </div>
-           </div>`
-             ).join("")}
-             <div class="expandless">
-               <button class="expand__btn" id="expand">
-                 <strong> Expand Less</strong>
-                 <strong>
-                   <span class="material-icons"> expand_less </span>
-                 </strong>
-               </button>
-             </div>
+        <div class="comments__list" id="comments__list">
+         
+        
+        ${blog.data.data.comments
+          .map(
+            (comment) =>
+              `<div class="comment__container" key=${comment._id}>
+            <div class="user__info">
+              <div class="user__image">
+                <img
+                  src="https://avatars.githubusercontent.com/u/59208992?v=4"
+                  alt=""
+                />
+              </div>
+              <div class="user__name">${comment.author.firstName}</div>
+              <div class="posted__at">
+                <strong>
+                <span class="PostedTime">Posted:${moment(
+                  comment.CreatedAt
+                ).fromNow()}</span></strong>
+              </div>
+            </div>
+            <div class="comments__list__items">
+              <p>${comment?.comment}</p>
+            </div>
+          </div>`
+          )
+          .join("")}
+          <div class="expandless">
+            <button class="expand__btn" id="expand">
+              <strong> Expand Less</strong>
+              <strong><span class="material-icons"> expand_less </span></strong>
+            </button>
           </div>
-          `
-           : ""
-       }
+        </div>
         <div class="comment__box">
           <form>
             <textarea
@@ -180,122 +176,158 @@ db.collection("blogs")
               required
             ></textarea>
             <div>
-              <button class="comment__btn" type="submit" id="addComment">Comment</button>
+              <button class="comment__btn" id="addComment">Comment</button>
             </div>
           </form>
         </div>
+        <div class="share__buttons__container"> 
+         share by:
+        <div id="share" class="share_btns"></div>
+        </div>
+        
       </div>`
 
-        // LIKE
-        document.getElementById("likeNumber").addEventListener("click", () => {
-          db.collection("blogs")
-            .doc(data.id)
-            .set(
-              {
-                Like: doc.data()?.Like.push(data.id),
-              },
-              {
-                merge: true,
-              }
-            )
+    $("#share").jsSocials({
+      text: "Do you want to learn coding? codemoon is the best place I ever know👩🏻‍💻.\n",
+      shares: [
+        "email",
+        "twitter",
+        "facebook",
+        "googleplus",
+        "linkedin",
+        "pinterest",
+        "stumbleupon",
+        "whatsapp",
+      ],
+    })
+    // SHOW COMMENTS
 
-          console.log(doc.data())
-        })
+    const comments = document.getElementById("commentsbtn")
+    comments.addEventListener("click", showComments)
 
-        //DISLIKE
-        document
-          .getElementById("dislikeNumber")
-          .addEventListener("click", () => {
-            db.collection("blogs")
-              .doc(data.id)
-              .set(
-                {
-                  DisLike: doc.data()?.DisLike.push(data.id),
-                },
-                {
-                  merge: true,
-                }
-              )
-          })
+    //  HIDE COMMENTS
 
-        // CREATE A COMMENT ON BLOG
+    const hideBtn = document.getElementById("expand")
+    hideBtn.addEventListener("click", hideComments)
 
-        document
-          .getElementById("addComment")
-          .addEventListener("click", createComment)
+    function showComments() {
+      document.getElementById("comments__list").style.display = "block"
+    }
 
-        function createComment(event) {
-          event.preventDefault()
+    function hideComments() {
+      document.getElementById("comments__list").style.display = "none"
+    }
 
-          const comment = document.getElementById("comment")
+    // COMMENT ON BLOG
 
-          db.collection("comments")
-            .add({
-              comments: comment.value,
-              author: "Jado",
-              blogId: data.id,
-              CreatedAt: Date.now(),
-              photo: "",
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-            })
-            .then((comment) => {
-              console.log(comment)
-            })
-            .catch((error) => {
-              const errorMessage = error.message
-              console.log(errorMessage)
-            })
-          comment.value = ""
+    document
+      .getElementById("addComment")
+      .addEventListener("click", async (event) => {
+        event.preventDefault()
+
+        const body = {
+          comment: document.getElementById("comment").value,
         }
 
-        // TARGETING CONTACT BUTTON
-        document
-          .getElementById("contact__btn")
-          .addEventListener("click", createContact)
-
-        // SHOW COMMENTS
-
-        const comments = document.getElementById("commentsbtn")
-        comments.addEventListener("click", showComments)
-
-        //  HIDE COMMENTS
-
-        const hideBtn = document.getElementById("expand")
-        hideBtn.addEventListener("click", hideComments)
+        await fetch(
+          `https://my-brand-codemoon.herokuapp.com/api/v1/blogs/${blogId}/comments`,
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("token")).token
+              }`,
+            },
+            body: JSON.stringify(body),
+          }
+        )
       })
-  })
-  .catch((error) => {
+
+    document
+      .getElementById("like__btn")
+      .addEventListener("click", async (event) => {
+        event.preventDefault()
+        const likes = await fetch(
+          `https://my-brand-codemoon.herokuapp.com/api/v1/blogs/like/${blogId}`,
+          {
+            method: "PATCH",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("token")).token
+              }`,
+            },
+          }
+        )
+
+        const data = await likes.json()
+        console.log(data)
+      })
+
+    document
+      .getElementById("dislike__btn")
+      .addEventListener("click", async (event) => {
+        event.preventDefault()
+        const dislikes = await fetch(
+          `https://my-brand-codemoon.herokuapp.com/api/v1/blogs/dislike/${blogId}`,
+          {
+            method: "PATCH",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${
+                JSON.parse(localStorage.getItem("token")).token
+              }`,
+            },
+          }
+        )
+
+        const data = await dislikes.json()
+        console.log(data)
+      })
+  } catch (error) {
     console.log(error)
-  })
-
-// SHOW AND HIDE COMMENTS
-
-function showComments() {
-  document.getElementById("comments__list").style.display = "block"
+  }
 }
 
-function hideComments() {
-  document.getElementById("comments__list").style.display = "none"
+fetchSingleBlog()
+
+const subscribe = async (event) => {
+  event.preventDefault()
+  const subscribe_form = document.getElementById("subscribe")
+  const body = {
+    email: subscribe_form.subscribe.value,
+  }
+
+  try {
+    const response = await fetch(
+      "https://my-brand-codemoon.herokuapp.com/api/v1/subscribe",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      }
+    )
+    const subscriber = await response.json()
+    const { message, status } = subscriber
+    console.log("subscriber", subscriber)
+    console.log("subscriber", status)
+    if (message) {
+      document.getElementById("sub_error").innerHTML = message
+      document.getElementById("sub_error").style.color = "white"
+    } else if (status === "success") {
+      document.getElementById("sub_error").innerHTML = "Thanks for subscribing"
+      document.getElementById("sub_error").style.color = "white"
+    }
+  } catch (error) {
+    console.log("hello")
+  }
+  subscribe_form.subscribe.value = ""
 }
-
-// RECOMMENDED BLOGS
-
-db.collection("blogs")
-  .orderBy("timestamp", "desc")
-  .onSnapshot((blog) => {
-    const data = blog.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
-
-    document.getElementById("recommended").innerHTML = data
-      .map(
-        (blog) =>
-          `<div class="recommended__card">
-          <a href="">
-            <img
-              src=${blog.data.ImageUrl}
-              alt=""
-            />
-          </a>
-        </div>`
-      )
-      .join("")
-  })
+document.getElementById("subscribe__btn").addEventListener("click", subscribe)

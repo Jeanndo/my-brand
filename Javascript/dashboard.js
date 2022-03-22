@@ -1,7 +1,7 @@
 // @ts-nocheck
-if (JSON.parse(localStorage.getItem("userInfo")) === null) {
-  location.href = "./../pages/login.html"
-}
+// if (JSON.parse(localStorage.getItem("userInfo")) === null) {
+//   location.href = "./../pages/login.html"
+// }
 console.log(localStorage.getItem("userInfo"))
 // ToolBar
 
@@ -136,57 +136,34 @@ project__button.addEventListener("click", (event) => {
 
 // CREATING A BLOG
 
-const CreateBlog = (event) => {
+const CreateBlog = async (event) => {
   event.preventDefault()
 
-  const blog__imgurl = document.getElementById("blog__imgurl").files[0]
-  const imageName = blog__imgurl.name
-  const blogRef = firebase.storage().ref(`Images/${imageName}`)
-
-  const uploadTask = blogRef.put(blog__imgurl)
-  const Title = document.getElementById("Title").value
-  const BlogText = tinymce.activeEditor.getContent()
-
-  uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-
-      document.getElementById("uploading__blog__process").innerHTML =
-        "Upload is " + progress + "% done"
-
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.paused:
-          console.log("uplaoding paused")
-          break
-        case firebase.storage.TaskState.running:
-          console.log("uplaod is running")
-      }
-    },
-    (error) => {
-      console.log(error)
-    },
-    () => {
-      uploadTask.snapshot.ref.getDownloadURL().then((downloadedImage) => {
-        db.collection("blogs")
-          .add({
-            Title: Title,
-            ImageUrl: downloadedImage,
-            Blog: BlogText,
-            Like: [],
-            DisLike: [],
-            CreatedAt: Date.now(),
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          })
-          .then((blogs) => {
-            console.log(blogs)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      })
+  try {
+    const body = {
+      title: document.getElementById("Title").value,
+      blogImage: document.getElementById("blog__imgurl").files[0],
+      description: tinymce.activeEditor.getContent(),
     }
-  )
+    console.log("Hello", document.getElementById("blog__imgurl").files[0])
+    const response = await fetch("http://localhost:8000/api/v1/blogs", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("token")).token
+        }`,
+      },
+      body: JSON.stringify(body),
+    })
+    const data = await response.json()
+    const { error, message, status } = data
+    console.log(error, message, status)
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 document
@@ -195,57 +172,35 @@ document
 
 // CREATING A PROJECT
 
-const createProject = (event) => {
+const createProject = async (event) => {
   event.preventDefault()
 
-  const Image_url = document.getElementById("image_url").files[0]
-  const imageName = Image_url.name
-  const projectRef = firebase.storage().ref(`Projects/${imageName}`)
-
-  const uploadTask = projectRef.put(Image_url)
-  const project__name = document.getElementById("projectName").value
-  const project__price = document.getElementById("project__price").value
-  const project__link = document.getElementById("project__link").value
-
-  uploadTask.on(
-    "state_changed",
-    (snapshot) => {
-      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-      document.getElementById("uploading__project__process").innerHTML =
-        "Upload is " + progress + "% done"
-
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.paused:
-          console.log("uplaoding paused")
-          break
-        case firebase.storage.TaskState.running:
-          console.log("uploading is running")
-          break
+  const body = {
+    name: document.getElementById("projectName").value,
+    projectImage: document.getElementById("image_url").files[0].name,
+    price: document.getElementById("project__price").value,
+    link: document.getElementById("project__link").value,
+  }
+  try {
+    const response = await fetch(
+      "https://my-brand-codemoon.herokuapp.com/api/v1/projects",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("token")).token
+          }`,
+        },
+        body: JSON.stringify(body),
       }
-    },
-    (error) => {
-      console.log(error)
-    },
-    () => {
-      uploadTask.snapshot.ref.getDownloadURL().then((downloadedImage) => {
-        db.collection("Projects")
-          .add({
-            imageUrl: downloadedImage,
-            projectName: project__name,
-            projectPrice: project__price,
-            projectLink: project__link,
-            CreatedAt: Date.now(),
-            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          })
-          .then((project) => {
-            console.log(project)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      })
-    }
-  )
+    )
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 document.getElementById("create__btn").addEventListener("click", createProject)

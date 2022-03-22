@@ -1,79 +1,38 @@
 // @ts-nocheck
-const login_Btn = document.getElementById("login__btn")
-
-// SETTING EVENT LISTENER ON LOGIN BTN
-
-login_Btn.addEventListener("click", (event) => {
-  // GET DOM ELEMENTS BY IDS
-
+const loginForm = document.getElementById("login_form")
+loginForm.addEventListener("submit", async (event) => {
   event.preventDefault()
-  let email = document.getElementById("email")
-  let password = document.getElementById("password")
-
-  // LOGIN USER
-
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email.value, password.value)
-    .then((userCredential) => {
-      // Signed in
-      var user = userCredential.user
-      console.log(user)
-      const { email, xa, uid } = user
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({
-          email: email,
-          token: xa,
-          userId: uid,
-        })
-      )
-      if (
-        JSON.parse(localStorage?.getItem("userInfo"))?.token &&
-        JSON.parse(localStorage?.getItem("userInfo"))?.email ===
-          "ukjeando@gmail.com"
-      ) {
-        location.href = "./../pages/Dashboard.html"
-      } else {
-        location.href = "./../index.html"
+  const body = {
+    email: loginForm.email.value,
+    password: loginForm.password.value,
+  }
+  console.log(body)
+  try {
+    const response = await fetch(
+      "https://my-brand-codemoon.herokuapp.com/api/v1/users/login",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       }
-      console.log(JSON.parse(localStorage.getItem("userInfo")))
-    })
-    .catch((error) => {
-      var errorCode = error.code
-      var errorMessage = error.message
-      console.log(errorMessage)
-      document.getElementById("error").innerHTML = errorMessage
-      document.getElementById("error").style.color = "red"
-    })
-  // CLEAR FORM
+    )
+    const user = await response.json()
+    const { error, message, status, token } = user
 
-  email.value = ""
-  password.value = ""
+    Toastify({
+      text: "Loged in successfully! 👍🏾",
+      className: "info",
+      position: "center",
+      style: {
+        background: "linear-gradient(to right, red, #fb923c)",
+      },
+    }).showToast()
+    localStorage.setItem("token", JSON.stringify({ token }))
+  } catch (error) {
+    console.log(error)
+  }
+  loginForm.email.value = ""
+  loginForm.password.value = ""
 })
 
-const googleAuth = () => {
-  let provider = new firebase.auth.GoogleAuthProvider()
-  firebase
-    .auth()
-    .signInWithPopup(provider)
-    .then((result) => {
-      var credential = result.credential
-      var token = credential.accessToken
-      var user = result.user
-      console.log("user", user)
-    })
-    .catch((error) => {
-      var errorCode = error.code
-      var errorMessage = error.message
-      console.log(errorMessage)
-
-      var email = error.email
-
-      var credential = error.credential
-    })
-}
-
-document
-  .getElementById("google_signup__btn")
-  .addEventListener("click", googleAuth)
+// 205890262805 - pv3mh5v0q127htimv5g0vesvqhjq6gej.apps.googleusercontent.com

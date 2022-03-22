@@ -748,3 +748,9 @@ body {
     font-size: 10px;
   }
 }
+
+.error span {
+  display: block;
+  text-align: center;
+  transform: translateY(-20px);
+}

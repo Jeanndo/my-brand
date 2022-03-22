@@ -104,8 +104,31 @@ body {
 }
 .resume {
   padding: 10px;
+  position: relative;
 }
 
+.badge-base {
+  position: absolute;
+  top: -15%;
+  left: 88%;
+  transform: translate(-50%, 50%);
+}
+.badge-base a {
+  text-decoration: none;
+  color: #fff;
+}
+.badge-base a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.badge-base a:active {
+  text-decoration: none;
+  color: #fff;
+}
+.badge-base a:link {
+  text-decoration: none;
+  color: #fff;
+}
 /* *FOOTER STYLES* */
 .footer {
   width: 100%;

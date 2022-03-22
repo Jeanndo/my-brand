@@ -16,6 +16,11 @@
     />
     <link
       rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Tangerine"
     />
 
@@ -24,7 +29,7 @@
   </head>
   <body>
     <div id="preloader"></div>
-    <div class="hamburgerMenu">
+    <div class="hamburgerMenu" id="hamburger-container">
       <nav class="hambergerNav">
         <div class="hambergerLogo">
           <a href="./index.html">
@@ -53,7 +58,9 @@
           </ul>
         </div>
         <div class="hamburger__menuIcon">
-          <span class="material-icons close__btn"> close </span>
+          <span class="material-icons close__btn" id="close__hamburger">
+            close
+          </span>
         </div>
       </nav>
     </div>
@@ -107,10 +114,14 @@
               </button>
             </a>
           </li>
-          <!-- <span class="material-icons"> menu </span>
-          <li><a href="#"></a></li> -->
         </ul>
       </div>
+      <span
+        class="material-icons hamburger__menu__icon"
+        id="hamburger__menu__btn"
+      >
+        menu
+      </span>
     </nav>
     <header class="header" id="about">
       <div class="aboutme">
@@ -201,7 +212,9 @@
                 placeat, quidem repudiandae rem voluptatibus veritatis ratione
                 et in porro illo aspernatur eaque nesciunt
               </p>
-              <button class="service__btn">Contact me</button>
+              <button class="service__btn">
+                <a href="#contact">Contact me</a>
+              </button>
             </div>
             <div class="services__card service__card2">
               <span class="material-icons service__icons"> view_quilt </span>
@@ -213,7 +226,9 @@
                 placeat, quidem repudiandae rem voluptatibus veritatis ratione
                 et in porro illo aspernatur eaque nesciunt
               </p>
-              <button class="service__btn">Contact me</button>
+              <button class="service__btn">
+                <a href="#contact">Contact me</a>
+              </button>
             </div>
             <div class="services__card service__card3">
               <span class="material-icons service__icons"> phone_iphone </span>
@@ -225,7 +240,9 @@
                 placeat, quidem repudiandae rem voluptatibus veritatis ratione
                 et in porro illo aspernatur eaque nesciunt
               </p>
-              <button class="service__btn">Contact me</button>
+              <button class="service__btn">
+                <a href="#contact">Contact me</a>
+              </button>
             </div>
           </div>
           <div class="services__row">
@@ -239,7 +256,9 @@
                 placeat, quidem repudiandae rem voluptatibus veritatis ratione
                 et in porro illo aspernatur eaque nesciunt
               </p>
-              <button class="service__btn">Contact me</button>
+              <button class="service__btn">
+                <a href="#contact">Contact me</a>
+              </button>
             </div>
             <div class="services__card service__card2">
               <span class="material-icons service__icons"> video_library </span>
@@ -251,7 +270,9 @@
                 placeat, quidem repudiandae rem voluptatibus veritatis ratione
                 et in porro illo aspernatur eaque nesciunt
               </p>
-              <button class="service__btn">Contact me</button>
+              <button class="service__btn">
+                <a href="#contact">Contact me</a>
+              </button>
             </div>
             <div class="services__card service__card3">
               <span class="material-icons service__icons"> computer </span>
@@ -263,7 +284,9 @@
                 placeat, quidem repudiandae rem voluptatibus veritatis ratione
                 et in porro illo aspernatur eaque nesciunt
               </p>
-              <button class="service__btn">Contact me</button>
+              <button class="service__btn">
+                <a href="#contact">Contact me</a>
+              </button>
             </div>
           </div>
           <div class="service__explore">
@@ -305,7 +328,7 @@
       </div>
       <div class="footer__contact__container">
         <div class="footer__contact__form">
-          <form>
+          <form id="contact__form">
             <div>
               <input
                 type="text"
@@ -345,7 +368,9 @@
               ></textarea>
             </div>
             <div>
-              <button class="send__btn" id="contact__btn">Send It</button>
+              <button class="send__btn" id="contact__btn" type="submit">
+                Send It
+              </button>
             </div>
           </form>
         </div>
@@ -389,7 +414,10 @@
         </div>
       </div>
       <div class="subscribe">
-        <form>
+        <form id="subscribe">
+          <div class="error">
+            <span id="sub_error"></span>
+          </div>
           <div class="subscribe__field">
             <input
               type="text"
@@ -398,7 +426,9 @@
               name="subscribe"
               required
             />
-            <button type="submit" class="subscribe__btn">subscribe</button>
+            <button type="submit" class="subscribe__btn" id="subscribe__btn">
+              subscribe
+            </button>
           </div>
         </form>
       </div>
@@ -433,21 +463,9 @@
     ></script>
     <script
       defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"
-    ></script>
-    <script defer src="./Javascript/congif.js"></script>
     <script defer src="./Javascript/contactme.js"></script>
     <script defer src="./Javascript/Landing.js"></script>
   </body>

@@ -16,6 +16,11 @@
     />
     <link
       rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Tangerine"
     />
     <link rel="stylesheet" href="../css/blogs.css" />
@@ -104,7 +109,7 @@
         </div>
         <div class="footer__contact__container">
           <div class="footer__contact__form">
-            <form>
+            <form id="contact__form">
               <div>
                 <input
                   type="text"
@@ -144,7 +149,9 @@
                 ></textarea>
               </div>
               <div>
-                <button class="send__btn" id="contact__btn">Send It</button>
+                <button class="send__btn" id="contact__btn" type="submit">
+                  Send It
+                </button>
               </div>
             </form>
           </div>
@@ -188,7 +195,10 @@
           </div>
         </div>
         <div class="subscribe">
-          <form>
+          <form id="subscribe">
+            <div class="error">
+              <span id="sub_error"></span>
+            </div>
             <div class="subscribe__field">
               <input
                 type="text"
@@ -197,7 +207,9 @@
                 name="subscribe"
                 required
               />
-              <button type="submit" class="subscribe__btn">Subscribe</button>
+              <button type="submit" class="subscribe__btn" id="subscribe__btn">
+                Subscribe
+              </button>
             </div>
           </form>
         </div>
@@ -229,21 +241,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script
       defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"
-    ></script>
-    <script defer src="./../Javascript/congif.js"></script>
     <script defer src="./../Javascript/displayBlogs.js"></script>
     <script defer src="./../Javascript/contactme.js"></script>
   </body>

@@ -16,6 +16,11 @@
     />
     <link
       rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Tangerine"
     />
 
@@ -75,7 +80,7 @@
     <div class="modal" id="hide">
       <div class="modal__header">
         <div class="authentication__form">
-          <form>
+          <form id="login_form">
             <div>
               <input
                 type="email"
@@ -130,29 +135,18 @@
       })
     </script>
     <script
+      defer
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script
       type="text/javascript"
       id="hs-script-loader"
       async
       defer
       src="//js-na1.hs-scripts.com/20250591.js"
     ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"
-    ></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"
-    ></script>
-    <script defer src="./../Javascript/congif.js"></script>
+
     <script defer src="./../Javascript/Login.js"></script>
   </body>
 </html>

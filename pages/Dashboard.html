@@ -237,12 +237,23 @@
           <!-- BLOG EDITOR -->
           <div class="create__dashboard__blog" id="blog__form">
             <div class="form__container">
-              <form>
+              <form
+                method="post"
+                action="/api/v1/blogs"
+                enctype="multipart/form-data"
+              >
                 <div class="text__input__container">
                   <input type="text" placeholder="Title" required id="Title" />
                 </div>
                 <div class="text__input__container">
-                  <input type="file" required id="blog__imgurl" />
+                  <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    required
+                    id="blog__imgurl"
+                    name="blogImage"
+                    multiple="multiple"
+                  />
                 </div>
                 <textarea
                   class="blog__description"
@@ -270,13 +281,24 @@
               </form>
             </div>
             <section class="blogs" id="blog"></section>
+            <div id="test"></div>
           </div>
           <!-- PROJECTS -->
           <div class="create__dashboard__project" id="projects__form">
             <div class="form__container">
-              <form>
+              <form
+                method="post"
+                action="/api/v1/projects"
+                enctype="multipart/form-data"
+              >
                 <div class="text__input__container">
-                  <input type="file" required id="image_url" />
+                  <input
+                    type="file"
+                    required
+                    id="image_url"
+                    name="projectImage"
+                    multiple="multiple"
+                  />
                 </div>
                 <div class="text__input__container">
                   <input
