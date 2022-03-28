@@ -28,21 +28,13 @@ const fetBlogs = async () => {
             <div class="blogs__actions">
               <div class="blogs__author"><span>Author</span></div>
               <div class="blogs__author__name"><span>${
-                blog?.data?.author
+                blog?.author
               }</span></div>
-              <div class="blogs__comments">
-                <figure>
-                  <img src="./img/greencomment.png" alt="comment" />
-                  <figcaption>
-                    <div class="blogs__comments-number">5</div>
-                  </figcaption>
-                </figure>
-              </div>
             </div>
           </div>
           <div class="blog__card-picture">
             <img
-              src="https://cdn.pixabay.com/photo/2018/09/25/17/14/airplane-3702676__340.jpg"
+              src=${blog.blogImage}
               alt="blog"
             />
           </div>
@@ -85,7 +77,7 @@ const fetchProjects = async () => {
             ` <div class="projects__card" key=${project._id}>
             <figure>
               <img
-                 src="https://cdn.pixabay.com/photo/2018/09/25/17/14/airplane-3702676__340.jpg"
+                 src=${project.projectImage}
                 alt=""
               />
               <figcaption>
@@ -93,7 +85,7 @@ const fetchProjects = async () => {
                   <div class="projects__description">
                     <div class="projects__title"><span>${project.name}</span></div>
                     <div class="projects__link">
-                      <a href=${project.link} class="projects__link-btn">
+                      <a href="${project?.link}" class="projects__link-btn" target="_blank">
                         <div class="link__container">
                           <img src="./img/Projectbtn.png" />
                         </div>

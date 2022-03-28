@@ -23,7 +23,7 @@ const getFetchProjects = async () => {
         (project) =>
           `<div class="project__card" key=${project._id}>
                 <img
-                  src="https://cdn.pixabay.com/photo/2018/09/25/17/14/airplane-3702676__340.jpg"
+                  src=${project.projectImage}
                   alt=${project.projectName}
                 />
                 <div class="project__actions">
@@ -120,7 +120,7 @@ document
 
 const deleteProject = async (id) => {
   try {
-    await fetch(
+    const response = await fetch(
       `https://my-brand-codemoon.herokuapp.com/api/v1/projects/${id}`,
       {
         method: "DELETE",
@@ -133,6 +133,17 @@ const deleteProject = async (id) => {
         },
       }
     )
+    const project = await response.json()
+    if (project.message) {
+      Toastify({
+        text: project.message,
+        className: "info",
+        position: "center",
+        style: {
+          background: "linear-gradient(to right, red, #fb923c)",
+        },
+      }).showToast()
+    }
   } catch (error) {
     console.log(error)
   }

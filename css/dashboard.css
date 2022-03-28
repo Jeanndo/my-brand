@@ -333,13 +333,24 @@ body {
 .secondMenu {
   display: none;
 }
-.blogs__icon {
-  margin-top: 10px;
-}
-.projects__icon {
+.dashboard__icon {
   margin-top: 12px;
 }
-
+.user__icon {
+  margin-top: 8px;
+}
+.blogs__icon {
+  margin-top: 8px;
+}
+.projects__icon {
+  margin-top: 8px;
+}
+.message__icon {
+  margin-top: 5px;
+}
+.subscribers__icon {
+  margin-top: 5px;
+}
 .toast {
   position: fixed;
   top: 0;
@@ -398,4 +409,98 @@ body {
 .uplaod {
   color: orange;
   font-size: 20px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #464852;
+}
+
+td,
+th {
+  border: 1px solid #7e7e7e;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #7e7e7e;
+}
+td span {
+  cursor: pointer;
+}
+.users {
+  position: relative;
+}
+.user__form__field {
+  width: 100%;
+  height: 40px;
+  outline-style: none;
+  border-radius: 3px;
+  border-style: none;
+  margin-bottom: 10px;
+  text-indent: 20px;
+  background-color: #7e7e7e;
+  color: #ffffff;
+}
+
+.add__user {
+  width: 200px;
+  padding: 5px;
+  background-color: #696969;
+  border-style: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: "Tangerine", serif;
+  font-size: 30px;
+}
+
+.user__form__container {
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.message__notfication {
+  position: relative;
+}
+.message__number {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  background-color: #28b485;
+  color: #fff;
+  border-radius: 100px;
+  padding: 4px;
+  font: bold;
+}
+.sub__natification {
+  position: relative;
+}
+.sub__number {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  background-color: #28b485;
+  color: #fff;
+  border-radius: 100px;
+  padding: 4px;
+  font: bold;
+}
+
+.users__notification {
+  position: relative;
+}
+
+.users__number {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  background-color: #28b485;
+  color: #fff;
+  border-radius: 100px;
+  padding: 4px;
+  font: bold;
 }

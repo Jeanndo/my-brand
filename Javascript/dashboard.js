@@ -1,7 +1,7 @@
 // @ts-nocheck
-// if (JSON.parse(localStorage.getItem("userInfo")) === null) {
-//   location.href = "./../pages/login.html"
-// }
+if (JSON.parse(localStorage.getItem("user")) === null) {
+  location.href = "./../pages/login.html"
+}
 console.log(localStorage.getItem("userInfo"))
 // ToolBar
 
@@ -43,6 +43,10 @@ const users = document.getElementById("user__form")
 const dashboardItems = document.getElementById("dashboard__items")
 const dashboard = document.getElementById("dashboard")
 const homeTab = document.getElementById("Home")
+const messageTab = document.getElementById("messageTab")
+const subTab = document.getElementById("subTab")
+const messages = document.getElementById("messages")
+const subscribers = document.getElementById("subscribers")
 
 // SIDE BAR TAB BUTTONS
 
@@ -51,12 +55,16 @@ const user__button = document.getElementById("user__button")
 const blog__button = document.getElementById("blog__button")
 const project__button = document.getElementById("project__button")
 const dashboard__button = document.getElementById("dashboard__button")
+const message__button = document.getElementById("message__button")
+const sub__button = document.getElementById("sub__button")
 
 // HIDDING DASHBOARD CONTENTS
 
 users.style.display = "none"
 projectForm.style.display = "none"
 blogForm.style.display = "none"
+messages.style.display = "none"
+subscribers.style.display = "none"
 
 // SIDE BAR FUNCTIONALITY HANDLING
 
@@ -75,6 +83,9 @@ dashboard.addEventListener("click", (event) => {
   blogForm.style.display = "none"
   projectForm.style.display = "none"
   users.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
+
   dashboardItems.style.display = "block"
 })
 
@@ -84,6 +95,8 @@ dashboard__button.addEventListener("click", (event) => {
   projectForm.style.display = "none"
   dashboardItems.style.display = "block"
   users.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
 })
 
 UserTab.addEventListener("click", (event) => {
@@ -92,6 +105,8 @@ UserTab.addEventListener("click", (event) => {
   projectForm.style.display = "none"
   dashboardItems.style.display = "none"
   users.style.display = "block"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
 })
 
 user__button.addEventListener("click", (event) => {
@@ -100,6 +115,8 @@ user__button.addEventListener("click", (event) => {
   projectForm.style.display = "none"
   dashboardItems.style.display = "none"
   users.style.display = "block"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
 })
 
 BlogTab.addEventListener("click", (event) => {
@@ -108,6 +125,8 @@ BlogTab.addEventListener("click", (event) => {
   projectForm.style.display = "none"
   dashboardItems.style.display = "none"
   users.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
 })
 
 blog__button.addEventListener("click", (event) => {
@@ -116,6 +135,8 @@ blog__button.addEventListener("click", (event) => {
   projectForm.style.display = "none"
   dashboardItems.style.display = "none"
   users.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
 })
 
 ProjectTab.addEventListener("click", (event) => {
@@ -124,6 +145,8 @@ ProjectTab.addEventListener("click", (event) => {
   projectForm.style.display = "block"
   users.style.display = "none"
   dashboardItems.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
 })
 
 project__button.addEventListener("click", (event) => {
@@ -132,6 +155,46 @@ project__button.addEventListener("click", (event) => {
   projectForm.style.display = "block"
   users.style.display = "none"
   dashboardItems.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "none"
+})
+
+messageTab.addEventListener("click", (event) => {
+  event.preventDefault()
+  blogForm.style.display = "none"
+  projectForm.style.display = "none"
+  users.style.display = "none"
+  dashboardItems.style.display = "none"
+  messages.style.display = "block"
+  subscribers.style.display = "none"
+})
+message__button.addEventListener("click", (event) => {
+  event.preventDefault()
+  blogForm.style.display = "none"
+  projectForm.style.display = "none"
+  users.style.display = "none"
+  dashboardItems.style.display = "none"
+  messages.style.display = "block"
+  subscribers.style.display = "none"
+})
+
+subTab.addEventListener("click", (event) => {
+  event.preventDefault()
+  blogForm.style.display = "none"
+  projectForm.style.display = "none"
+  users.style.display = "none"
+  dashboardItems.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "block"
+})
+sub__button.addEventListener("click", (event) => {
+  event.preventDefault()
+  blogForm.style.display = "none"
+  projectForm.style.display = "none"
+  users.style.display = "none"
+  dashboardItems.style.display = "none"
+  messages.style.display = "none"
+  subscribers.style.display = "block"
 })
 
 // CREATING A BLOG
@@ -140,29 +203,33 @@ const CreateBlog = async (event) => {
   event.preventDefault()
 
   try {
-    const body = {
-      title: document.getElementById("Title").value,
-      blogImage: document.getElementById("blog__imgurl").files[0],
-      description: tinymce.activeEditor.getContent(),
-    }
+    const formData = new FormData()
+    formData.append("title", document.getElementById("Title").value)
+    formData.append(
+      "blogImage",
+      document.getElementById("blog__imgurl").files[0]
+    )
+    formData.append("description", tinymce.activeEditor.getContent())
+
     console.log("Hello", document.getElementById("blog__imgurl").files[0])
-    const response = await fetch("http://localhost:8000/api/v1/blogs", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("token")).token
-        }`,
-      },
-      body: JSON.stringify(body),
-    })
+    const response = await fetch(
+      "https://my-brand-codemoon.herokuapp.com/api/v1/blogs",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${
+            JSON.parse(localStorage.getItem("token")).token
+          }`,
+        },
+        body: formData,
+      }
+    )
     const data = await response.json()
     const { error, message, status } = data
+    console.log("data", data)
     console.log(error, message, status)
-    console.log(data)
   } catch (error) {
-    console.log(error)
+    console.log(error.stack)
   }
 }
 
@@ -175,29 +242,27 @@ document
 const createProject = async (event) => {
   event.preventDefault()
 
-  const body = {
-    name: document.getElementById("projectName").value,
-    projectImage: document.getElementById("image_url").files[0].name,
-    price: document.getElementById("project__price").value,
-    link: document.getElementById("project__link").value,
-  }
+  const formData = new FormData()
+  formData.append("name", document.getElementById("projectName").value)
+  formData.append("projectImage", document.getElementById("image_url").files[0])
+  formData.append("price", document.getElementById("project__price").value)
+  formData.append("link", document.getElementById("project__link").value)
   try {
     const response = await fetch(
       "https://my-brand-codemoon.herokuapp.com/api/v1/projects",
       {
         method: "POST",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
           Authorization: `Bearer ${
             JSON.parse(localStorage.getItem("token")).token
           }`,
         },
-        body: JSON.stringify(body),
+        body: formData,
       }
     )
     const data = await response.json()
     console.log(data)
+    document.getElementById("blog__form").location.reload(true)
   } catch (error) {
     console.log(error)
   }

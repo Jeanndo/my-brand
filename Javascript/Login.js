@@ -19,6 +19,10 @@ loginForm.addEventListener("submit", async (event) => {
     const user = await response.json()
     const { error, message, status, token } = user
 
+    localStorage.setItem("user", JSON.stringify({ role: user.data.user.role }))
+    if (user.data.user.role === "admin") {
+      location.href = "./../pages/Dashboard.html"
+    }
     Toastify({
       text: "Loged in successfully! 👍🏾",
       className: "info",
