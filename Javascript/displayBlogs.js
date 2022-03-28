@@ -32,13 +32,13 @@ const fetchBlogs = async () => {
               <div class="loadmore" id="readmorebtn" onclick="getBlogId('${
                 blog._id
               }')">
-               <button> Read more..</button>
+               <button class="readmore"> Read more..</button>
               </div>
             </div>
           </div>
           <div class="blog__card-picture">
             <img
-              src="https://cdn.pixabay.com/photo/2018/09/25/17/14/airplane-3702676__340.jpg"
+              src=${blog.blogImage}
               alt="blog"
             />
           </div>
@@ -60,9 +60,7 @@ function getBlogId(id) {
 
   let params = new URLSearchParams()
   params.append("id", id)
-  location.href =
-    " http://127.0.0.1:5500/mybrand/my-brand/pages/singleBlog.html?" +
-    params.toString()
+  location.href = "./../pages/singleBlog.html?" + params.toString()
 }
 
 // SEARCH BLOG

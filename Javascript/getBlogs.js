@@ -39,7 +39,7 @@ const getBlogsFromMongoDB = async () => {
                 </div>
                 <div class="blog__card-picture">
                   <img
-                    src="https://cdn.pixabay.com/photo/2016/03/31/20/53/bicycle-1296063__480.png"
+                    src=${blog.blogImage}
                     alt="blog"
                   />
                 </div>
@@ -131,7 +131,18 @@ const deleteBlog = async (id) => {
     )
 
     const data = await response.json()
-    console.log(data)
+    const { success } = data
+    console.log(success)
+    if (data.message) {
+      Toastify({
+        text: data.message,
+        className: "info",
+        position: "center",
+        style: {
+          background: "linear-gradient(to right, red, #fb923c)",
+        },
+      }).showToast()
+    }
   } catch (error) {
     console.log(data)
   }

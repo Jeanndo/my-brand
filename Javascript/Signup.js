@@ -5,25 +5,40 @@ signup_Form.addEventListener("submit", async (event) => {
   event.preventDefault()
 
   // CREATE USER
-  const body = {
-    firstName: signup_Form.firstName.value,
-    lastName: signup_Form.lastName.value,
-    email: signup_Form.email.value,
-    password: signup_Form.password.value,
-    confirmPassword: signup_Form.confirmPassword.value,
+
+  try {
+    const body = {
+      firstName: signup_Form.firstName.value,
+      lastName: signup_Form.lastName.value,
+      email: signup_Form.email.value,
+      password: signup_Form.password.value,
+      confirmPassword: signup_Form.confirmPassword.value,
+    }
+    const response = await fetch(
+      "https://my-brand-codemoon.herokuapp.com/api/v1/users/signup",
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      }
+    )
+
+    const user = await response.json()
+    const { error, message, status } = user
+    // document.getElementById("error").innerHTML = message
+    // document.getElementById("error").style.color = "red"
+
+    Toastify({
+      text: message,
+      className: "info",
+      position: "center",
+      style: {
+        background: "linear-gradient(to right, red, #fb923c)",
+      },
+    }).showToast()
+  } catch (error) {
+    console.log(error)
   }
-  await fetch("https://my-brand-codemoon.herokuapp.com/api/v1/users/signup", {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      const { error, message, status } = json
-      console.log(error, message, status)
-      document.getElementById("error").innerHTML = message
-      document.getElementById("error").style.color = "red"
-    })
 
   // CLEAR FORM
   signup_Form.firstName.value = ""

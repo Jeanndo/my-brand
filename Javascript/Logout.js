@@ -4,7 +4,7 @@ const Logout = () => {
     .auth()
     .signOut()
     .then(() => {
-      localStorage.setItem("userInfo", JSON.stringify(null))
+      localStorage.setItem("user", JSON.stringify(null))
 
       location.href = "./../pages/login.html"
     })

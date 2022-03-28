@@ -27,7 +27,7 @@ const fetchProjects = async () => {
             ` <div class="projects__card" key=${project._id}>
             <figure>
               <img
-               src="https://cdn.pixabay.com/photo/2020/06/02/06/29/ryanair-5249631__480.jpg"
+               src=${project.projectImage}
                alt=""
               />
               <figcaption>
@@ -36,7 +36,7 @@ const fetchProjects = async () => {
                     <span class="project__price">${project.price} $</span>
                     <div class="projects__title"><span>${project.name}</span></div>
                     <div class="projects__link">
-                      <a href=${project.link} class="projects__link-btn">
+                      <a href="${project.link}" class="projects__link-btn" target="_blank">
                         <div class="link__container">
                           <img src="../img/Projectbtn.png" />
                         </div>

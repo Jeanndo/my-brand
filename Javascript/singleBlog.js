@@ -44,12 +44,13 @@ const fetchRecommendedBlogs = async () => {
           `<div class="recommended__card">
           <a href="">
             <img
-              src="https://cdn.pixabay.com/photo/2017/07/20/04/38/fantasy-2521221_960_720.jpg"
+              src=${blog?.blogImage}
               alt=""
             />
           </a>
         </div>`
       )
+      .sort()
       .join("")
   } catch (error) {
     console.log(error)
@@ -66,7 +67,6 @@ const fetchSingleBlog = async () => {
     const response = await fetch(
       `https://my-brand-codemoon.herokuapp.com/api/v1/blogs/${blogId}`
     )
-
     const blog = await response.json()
     console.log(blog.data.data)
     document.getElementById(
@@ -76,14 +76,14 @@ const fetchSingleBlog = async () => {
         <div class="container__blog__image">
           <div>
             <img
-              src="https://cdn.pixabay.com/photo/2018/10/15/17/50/dog-3749561_960_720.jpg"
+              src=${blog.data.data.blogImage}
             />
           </div>
           <div class="related__post">
             <a href="#" class="recommended__tiltle">
               <img
                 class="related__post-img"
-                src="https://cdn.pixabay.com/photo/2017/07/20/04/38/fantasy-2521221_960_720.jpg"
+                 src=${blog.data.data.blogImage}
                 alt=""
               />
               <strong> Recommended is Synergy west power?</strong>
@@ -196,7 +196,6 @@ const fetchSingleBlog = async () => {
         "googleplus",
         "linkedin",
         "pinterest",
-        "stumbleupon",
         "whatsapp",
       ],
     })

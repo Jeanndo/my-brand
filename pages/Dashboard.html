@@ -16,6 +16,11 @@
     />
     <link
       rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Tangerine"
     />
     <link
@@ -138,7 +143,7 @@
           <div class="dashboard__toolbar__actions__avatar">
             <img
               id="admin__profile"
-              src="https://media-exp1.licdn.com/dms/image/C4D03AQHfiJUDxoQhgw/profile-displayphoto-shrink_800_800/0/1603820615070?e=1650499200&v=beta&t=8oRTmlTiTdQAxrbFpvqsMjjKRIu6bm2kfM33HnVL0jM"
+              src="https://avatars.githubusercontent.com/u/59208992?v=4"
               alt=""
             />
           </div>
@@ -159,14 +164,15 @@
                 <span class="material-icons"> home </span>
               </div>
               <div id="dashboard__button">
-                <span class="material-icons"> dashboard </span>
+                <span class="material-icons dashboard__icon"> dashboard </span>
               </div>
-              <div id="user__button">
+              <div id="user__button" class="users__notification">
                 <span
-                  class="iconify"
+                  class="iconify user__icon"
                   data-icon="ant-design:user-outlined"
                   style="color: white"
                 ></span>
+                <span class="notifications users__number">5</span>
               </div>
               <div id="blog__button">
                 <span
@@ -181,6 +187,24 @@
                   data-icon="ph:projector-screen-chart"
                   style="color: white"
                 ></span>
+              </div>
+              <div id="message__button" class="message__notfication">
+                <span
+                  class="iconify message__icon"
+                  data-icon="ant-design:message-outlined"
+                  style="color: white"
+                ></span>
+                <span class="notifications message__number">5</span>
+              </div>
+              <div id="sub__button" class="sub__natification">
+                <span
+                  class="iconify subscribers__icon"
+                  data-icon="la:users"
+                  style="color: white"
+                ></span>
+                <span class="notifications sub__number" id="sub_numbers"
+                  >5</span
+                >
               </div>
             </div>
             <ul id="list">
@@ -219,6 +243,20 @@
                   </div>
                 </a>
               </li>
+              <li id="messageTab">
+                <a href="#">
+                  <div class="items__button">
+                    <span class="label">Messages</span>
+                  </div>
+                </a>
+              </li>
+              <li id="subTab">
+                <a href="#">
+                  <div class="items__button">
+                    <span class="label">Subscribers</span>
+                  </div>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -232,7 +270,50 @@
             </div>
           </div>
           <div id="user__form">
-            <h2>USERS</h2>
+            <div class="form__container users">
+              <div class="user__form__container">
+                <form>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      class="user__form__field"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      class="user__form__field"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      class="user__form__field"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Password"
+                      class="user__form__field"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Confirm Password"
+                      class="user__form__field"
+                    />
+                  </div>
+
+                  <button class="add__user">Add User</button>
+                </form>
+              </div>
+              <div id="users__table"></div>
+            </div>
           </div>
           <!-- BLOG EDITOR -->
           <div class="create__dashboard__blog" id="blog__form">
@@ -248,7 +329,6 @@
                 <div class="text__input__container">
                   <input
                     type="file"
-                    accept="image/png, image/jpeg"
                     required
                     id="blog__imgurl"
                     name="blogImage"
@@ -344,6 +424,12 @@
             </div>
             <div class="dashboard__project__card__row" id="project__row"></div>
           </div>
+          <div id="messages">
+            <div id="messages__container"></div>
+          </div>
+          <div id="subscribers">
+            <div id="subscribers__container"></div>
+          </div>
         </div>
       </main>
     </div>
@@ -353,7 +439,11 @@
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
+    <script
+      defer
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script
       defer
       src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"
@@ -376,5 +466,8 @@
     <script defer src="./../Javascript/getBlogs.js"></script>
     <script defer src="./../Javascript/getProjects.js"></script>
     <script defer src="./../Javascript/Logout.js"></script>
+    <script defer src="./../Javascript/getUsers.js"></script>
+    <script defer src="./../Javascript/getMessages.js"></script>
+    <script defer src="./../Javascript/subscribers.js"></script>
   </body>
 </html>
