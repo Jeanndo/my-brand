@@ -28,7 +28,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./../css/dashboard.css" />
-    <title>..:: My Brand ::..</title>
+    <title>..:: codemoon ::..</title>
     <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <script src="tinymce/tinymce.min.js"></script>
     <script>
@@ -65,14 +65,14 @@
           if (meta.filetype === "file") {
             callback("https://www.google.com/logos/google.jpg", {
               text: "My text",
-            })
+            });
           }
 
           /* Provide image and alt text for the image dialog */
           if (meta.filetype === "image") {
             callback("https://www.google.com/logos/google.jpg", {
               alt: "My alt text",
-            })
+            });
           }
 
           /* Provide alternative source and posted for the media dialog */
@@ -80,7 +80,7 @@
             callback("movie.mp4", {
               source2: "alt.ogg",
               poster: "https://www.google.com/logos/google.jpg",
-            })
+            });
           }
         },
         templates: [
@@ -111,7 +111,7 @@
         noneditable_noneditable_class: "mceNonEditable",
         toolbar_mode: "sliding",
         contextmenu: "link image imagetools table",
-      })
+      });
 
       // tinymce -
       //   wysiwyg -
